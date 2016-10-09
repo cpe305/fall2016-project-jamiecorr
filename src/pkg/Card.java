@@ -1,14 +1,15 @@
-public class Card
+package pkg;
+public class Card implements Printer
 {
     private String suit;
     private int value;
     private int position;
    
-    public Card(String a, int b, int c)
+    public Card(String suit, int value, int position)
     {
-        suit = a;
-        value = b;
-        position = c;
+        this.suit = suit;
+        this.value = value;
+        this.position = position;
     }
    
     public String getSuit()
@@ -24,5 +25,10 @@ public class Card
     public int getPosition()
     {
         return position;
+    }
+    
+    public void print(String statement)
+    {
+    
     }
 }
