@@ -20,9 +20,8 @@ public class CasinoDriver {
            if (gameChoice == 1)
            {
                Blackjack.play(playersBank);
-           }
-                 
-           if (gameChoice == 2)
+           }      
+           else if (gameChoice == 2)
            {
                Poker.play(playersBank);
            }
