@@ -18,4 +18,18 @@ public class Bank
     	money -= amount;
     }
 
+    public boolean isBroke()
+    {
+        return money <= 0;
+    }
+    
+    public double getCurrentBalance()
+    {
+        return money;
+    }
+   
+    public String printCurrentBalance()
+    {
+        return "You have $" + money;
+    }
 }
