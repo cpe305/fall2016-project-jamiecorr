@@ -1,5 +1,8 @@
 package pkg;
-public interface Game
+public abstract class Game
 {
-	void play(Bank bank);
+	void play(Bank bank) 
+	{
+		
+	}
 }
