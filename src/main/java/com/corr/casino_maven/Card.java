@@ -1,15 +1,13 @@
-package pkg;
+package com.corr.casino_maven;
 public class Card implements Printer
 {
     private String suit;
     private int value;
-    private int position;
    
-    public Card(String suit, int value, int position)
+    public Card(String suit, int value)
     {
         this.suit = suit;
         this.value = value;
-        this.position = position;
     }
    
     public String getSuit()
@@ -22,9 +20,9 @@ public class Card implements Printer
         return value;
     }
     
-    public int getPosition()
+    public String toString()
     {
-        return position;
+        return "" + value + " of " + suit;
     }
     
     public void print(String statement)

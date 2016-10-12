@@ -1,23 +1,23 @@
-package pkg;
+package com.corr.casino_maven;
 import java.util.ArrayList;
 
 public class Hand implements Printer
 {
-    private String name;
+    private String playerName;
     private ArrayList<Card> hand;
     
-    public Hand(String name)
+    public Hand(String playerName)
     {
         hand = new ArrayList<Card>();
-        this.name = name;
+        this.playerName = playerName;
     }
     
-    public String getName()
+    public String getPlayerName()
     {
-        return name;
+        return playerName;
     }
     
-    public Card getCardInPosition(int i)
+    public Card getCard(int i)
     {
         return hand.get(i);
     }

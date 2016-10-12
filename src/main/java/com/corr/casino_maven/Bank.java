@@ -1,4 +1,4 @@
-package pkg;
+package com.corr.casino_maven;
 public class Bank
 {
     private double money;
