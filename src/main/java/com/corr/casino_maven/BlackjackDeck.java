@@ -75,8 +75,6 @@ public class BlackjackDeck extends Deck
 		            setDeck.add(new Card("King", suitChoice, value));
 		        case 11:
 		            setDeck.add(new Card("Ace", suitChoice, value));
-		        default:
-		            System.out.println("Error at setValues");
 		    }  
 		}
 	}
