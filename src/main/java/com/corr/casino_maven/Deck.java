@@ -3,30 +3,10 @@ package com.corr.casino_maven;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck 
+public abstract class Deck 
 {	
 	private ArrayList<Card> deck;
 	
-    public Deck()
-    {
-    	this.createDeck();
-    }
-   
-    public void createDeck()
-    {
-        ArrayList<Card> setDeck = new ArrayList<Card>();
-        
-        for (int i = 2; i <= 14; i++)
-        {
-            setDeck.add(new Card("clubs", i));
-            setDeck.add(new Card("diamonds", i));
-            setDeck.add(new Card("hearts", i));
-            setDeck.add(new Card("spades", i));       
-        }
-        
-        deck = setDeck;
-    }
-    
     public int getSize()
     {
         return deck.size();
@@ -49,7 +29,7 @@ public class Deck
     
     public void printCards()
     {
-    	for (int i = 0; i < 52; i++)
+    	for (int i = 0; i < deck.size(); i++)
 		{
     		System.out.println(deck.get(i).toString());
 			System.out.println();
@@ -60,4 +40,6 @@ public class Deck
     {
 		
     }
+	
+	abstract ArrayList<Card> createDeck();
 }

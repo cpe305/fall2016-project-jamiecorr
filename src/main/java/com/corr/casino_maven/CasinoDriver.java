@@ -3,9 +3,11 @@ package com.corr.casino_maven;
 import java.util.Scanner;
 
 public class CasinoDriver {
+	static final double BALANCE = 100;
+	static final int CHOICE1 = 1, CHOICE2 = 2, CHOICE3 = 3;
+	static Bank playersBank = new Bank(BALANCE);
+
 	public static final void main(String[] args) {
-		double startingBalance = 100;
-		Bank playersBank = new Bank(startingBalance);
 	     
 		System.out.println("Do you want to play in the casino? (yes or no)");
 		Scanner scan = new Scanner(System.in);
@@ -13,14 +15,14 @@ public class CasinoDriver {
        
 		while (input.equals("yes"))
 		{
-           System.out.println("You have $" + playersBank.getCurrentBalance()+ "Press 1 for Blackjack or 2 for Poker");
+           System.out.println("You have $" + playersBank.getCurrentBalance()+ "Press 1:Blackjack or 2:Poker");
            int gameChoice = scan.nextInt();
            
-           if (gameChoice == 1)
+           if (gameChoice == CHOICE1)
            {
-               Blackjack.play(playersBank);
+               Blackjack.play();
            }      
-           else if (gameChoice == 2)
+           else if (gameChoice == CHOICE2)
            {
                Poker.play(playersBank);
            }
