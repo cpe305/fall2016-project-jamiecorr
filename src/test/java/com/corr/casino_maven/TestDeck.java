@@ -6,7 +6,7 @@ import org.junit.*;
 
 public class TestDeck
 {
-	Deck d = new Deck();
+	Deck d = new BlackjackDeck();
 	
 	@Test
 	public void testGetDeckSize() {

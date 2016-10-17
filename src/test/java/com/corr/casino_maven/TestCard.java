@@ -7,8 +7,8 @@ import org.junit.Test;
 
 public class TestCard
 {
-	Card card = new Card("clubs", 5);
-	
+	Card card = new Card("Two", "clubs", 5);
+
 	@Test
 	public void testGetSuit()
 	{
@@ -24,6 +24,6 @@ public class TestCard
 	@Test
 	public void testToString()
 	{
-		assertEquals("5 of clubs", card.toString());
+		assertEquals("Two of clubs", card.toString());
 	}
 }

@@ -14,7 +14,7 @@ public class TestHand {
 	
 	@Test
 	public void getCardInPosition() {
-		Card c = new Card("clubs", 5);
+		Card c = new Card("Two", "clubs", 5);
 		h.addCard(c);
 		
 		assertEquals(c, h.getCard(0));
