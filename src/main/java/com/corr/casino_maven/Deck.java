@@ -5,7 +5,12 @@ import java.util.Random;
 
 public abstract class Deck 
 {	
-	private ArrayList<Card> deck;
+	public static ArrayList<Card> deck;
+	
+	public Deck()
+	{
+		deck = new ArrayList<Card>();
+	}
 	
     public int getSize()
     {
@@ -41,5 +46,5 @@ public abstract class Deck
 		
     }
 	
-	abstract ArrayList<Card> createDeck();
+	abstract ArrayList<Card> createDeck(ArrayList<Card> deck);
 }

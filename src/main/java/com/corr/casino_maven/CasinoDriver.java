@@ -15,7 +15,7 @@ public class CasinoDriver {
        
 		while (input.equals("yes"))
 		{
-           System.out.println("You have $" + playersBank.getCurrentBalance()+ "Press 1:Blackjack or 2:Poker");
+           System.out.println("You have $" + playersBank.getCurrentBalance()+ "  Press 1:Blackjack or 2:Poker");
            int gameChoice = scan.nextInt();
            
            if (gameChoice == CHOICE1)

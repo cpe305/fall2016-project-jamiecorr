@@ -23,17 +23,17 @@ public class BlackjackDeck extends Deck
 	}
 	
 	Suits suits;
-	ArrayList<Card> setDeck;
 	private static final int MAX_CARD_VALUE = 11;
 	
 	public BlackjackDeck()
 	{
-		this.createDeck();
+		super();
+		this.createDeck(deck);
 	}
 
-	public ArrayList<Card> createDeck()
+	public ArrayList<Card> createDeck(ArrayList<Card> myDeck)
 	{
-		setDeck = new ArrayList<Card>();
+		myDeck = new ArrayList<Card>();
 		
 		for (int value = 0; value < MAX_CARD_VALUE; value++)
 	    {
@@ -43,7 +43,7 @@ public class BlackjackDeck extends Deck
 			setValues(Suits.SPADES.toString());
 	    }
 		
-	    return setDeck;
+	    return myDeck;
 	}
 	
 	public void setValues(String suitChoice)
@@ -53,28 +53,28 @@ public class BlackjackDeck extends Deck
 			switch (value)
 		    {
 		        case 2:
-		            setDeck.add(new Card("Two", suitChoice, value));
+		            deck.add(new Card("Two", suitChoice, value));
 		        case 3:
-		            setDeck.add(new Card("Three", suitChoice, value));
+		        	deck.add(new Card("Three", suitChoice, value));
 		        case 4:
-		            setDeck.add(new Card("Four", suitChoice, value));
+		        	deck.add(new Card("Four", suitChoice, value));
 		        case 5:
-		            setDeck.add(new Card("Five", suitChoice, value));
+		        	deck.add(new Card("Five", suitChoice, value));
 		        case 6:
-		            setDeck.add(new Card("Six", suitChoice, value));
+		        	deck.add(new Card("Six", suitChoice, value));
 		        case 7:
-		            setDeck.add(new Card("Seven", suitChoice, value));
+		        	deck.add(new Card("Seven", suitChoice, value));
 		        case 8:
-		            setDeck.add(new Card("Eight", suitChoice, value));
+		        	deck.add(new Card("Eight", suitChoice, value));
 		        case 9:
-		            setDeck.add(new Card("Nine", suitChoice, value));
+		        	deck.add(new Card("Nine", suitChoice, value));
 		        case 10:
-		            setDeck.add(new Card("Ten", suitChoice, value));
-		            setDeck.add(new Card("Jack", suitChoice, value));
-		            setDeck.add(new Card("Queen", suitChoice, value));
-		            setDeck.add(new Card("King", suitChoice, value));
+		        	deck.add(new Card("Ten", suitChoice, value));
+		        	deck.add(new Card("Jack", suitChoice, value));
+		        	deck.add(new Card("Queen", suitChoice, value));
+		        	deck.add(new Card("King", suitChoice, value));
 		        case 11:
-		            setDeck.add(new Card("Ace", suitChoice, value));
+		        	deck.add(new Card("Ace", suitChoice, value));
 		    }  
 		}
 	}

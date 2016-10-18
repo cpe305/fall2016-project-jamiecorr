@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 public class Blackjack
 {
-	static Hand playersHand = new Hand("Player");
-	static Hand dealersHand = new Hand("Dealer");  
+	static Hand playersHand, dealersHand;
 	static boolean isStillPlaying = true;
 	static double bet;
-	final static double DECK_MINIMUM = 15,  BET_INCREASE = 1.5, MIN_HIT = 16;
-	static final int TWENTY_ONE = 21;
+	final static double BET_INCREASE = 1.5;
+	static final int TWENTY_ONE = 21, DECK_MINIMUM = 15, MIN_HIT = 16;
 	static String usersTurnPrompt = "Press 'n' for next card, 's' to stand, 'd' to double down";
 
 	public static void play()
@@ -130,9 +129,7 @@ public class Blackjack
 					System.out.println("Tie");
 				}
 			}
-                
-			System.out.println(CasinoDriver.playersBank);
-                
+                                
 			if (CasinoDriver.playersBank.isBroke())
 			{
 				System.out.println("No more money");
@@ -148,6 +145,9 @@ public class Blackjack
 	
 	public static void dealCards(Deck thisDeck)
 	{
+		playersHand = new Hand("Player");
+		dealersHand = new Hand("Dealer");
+		
 		Card playersCard1 = thisDeck.drawRandomCard();
 		Card playersCard2 = thisDeck.drawRandomCard();
 		playersHand.addCard(playersCard1);
