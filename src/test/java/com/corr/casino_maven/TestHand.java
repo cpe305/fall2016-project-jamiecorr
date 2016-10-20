@@ -13,7 +13,7 @@ public class TestHand {
 	}
 	
 	@Test
-	public void getCardInPosition() {
+	public void testGetCardInPosition() {
 		Card c = new Card("Two", "clubs", 5);
 		h.addCard(c);
 		
