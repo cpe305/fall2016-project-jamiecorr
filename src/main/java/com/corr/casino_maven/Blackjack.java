@@ -13,26 +13,27 @@ public class Blackjack
 
 	public static void play()
 	{
-		Scanner scan = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		
-		Deck currentDeck = new BlackjackDeck();
+		Deck currentDeck = new Deck(CasinoDriver.CHOICE1);
               
 		System.out.println("New Hand?");
-		String input = scan.nextLine();
+		String input = scanner.nextLine();
        
 		while (input.equals("yes"))
 		{
 			//reset deck if necessary
 			if (currentDeck.getSize() <= DECK_MINIMUM)
 			{
-				currentDeck = new BlackjackDeck();
+				currentDeck = new Deck(CasinoDriver.CHOICE1);
 			}
            			
 			dealCards(currentDeck);
 			
-			System.out.println("2 cards dealt to each player, " + currentDeck.getSize() + " more Card in the deck");
+			System.out.println("2 cards dealt to each player, " + currentDeck.getSize() + " more cards in the deck");
 			System.out.println("How much do you want to bet this round?");
-			bet = scan.nextDouble();
+			bet = scanner.nextDouble();
+			scanner.nextLine();
 	              
 			System.out.println("Players cards:  " + playersHand.getCard(0) + " and " + playersHand.getCard(1));
 			System.out.println("Dealers cards:  " + dealersHand.getCard(1) + " and another card");
@@ -43,7 +44,8 @@ public class Blackjack
 			}
  
 			System.out.println(usersTurnPrompt);
-			String decision = scan.nextLine();
+			String decision = scanner.nextLine();
+			
            
 			while (decision.equals("n"))
 			{
@@ -60,7 +62,7 @@ public class Blackjack
 				{
 					System.out.println("You have:  " + playersHand.printHand());
 					System.out.println(usersTurnPrompt);
-					decision = scan.nextLine();
+					decision = scanner.nextLine();
 				}
 			}
                 
@@ -87,7 +89,7 @@ public class Blackjack
                 
 			if (isStillPlaying)
 			{
-				System.out.println("Dealer's other card:  " + dealersHand);
+				System.out.println("Dealer's other card:  " + dealersHand.getCard(0));
                     
 				//dealer has to hit if 16 or less
 				while (BlackjackHandModifier.getHandValue(dealersHand) <= MIN_HIT)
@@ -137,10 +139,10 @@ public class Blackjack
 			}
                 
 			System.out.println("New hand?");
-			input = scan.nextLine();
+			input = scanner.nextLine();
 		}
    
-		scan.close();
+		scanner.close();
 	}
 	
 	public static void dealCards(Deck thisDeck)

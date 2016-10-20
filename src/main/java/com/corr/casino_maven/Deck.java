@@ -3,40 +3,65 @@ package com.corr.casino_maven;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Deck 
+
+public class Deck 
 {	
-	public static ArrayList<Card> deck;
+	public enum Suits {
+		CLUBS("clubs"),
+		DIAMONDS("diamonds"),
+		HEARTS("hearts"),
+		SPADES("spades");
+
+	    private final String text;
+
+	    private Suits(final String text) {
+	        this.text = text;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return text;
+	    }
+	}
 	
-	public Deck()
+	Suits suits;
+	private ArrayList<Card> newDeck;
+	private static final int MAX_CARD_VALUE = 11;
+	
+	public Deck(int gameChoice)
 	{
-		deck = new ArrayList<Card>();
+		newDeck = new ArrayList<Card>();
+		if (gameChoice == 1)
+		{
+			createBJDeck();
+		}
 	}
 	
     public int getSize()
     {
-        return deck.size();
+        return newDeck.size();
     }
     
     public Card getCardInPosition(int ndx)
     {
-    	return deck.get(ndx);
+    	return newDeck.get(ndx);
     }
     
     public Card drawRandomCard()
     {
         Random generator = new Random();
-        int cardValue = generator.nextInt(deck.size());
-        Card test = deck.get(cardValue);
+        int cardValue = generator.nextInt(newDeck.size());
+        Card test = newDeck.get(cardValue);
         
-        deck.remove(cardValue);
+        newDeck.remove(cardValue);
         return test;
     }
     
     public void printCards()
     {
-    	for (int i = 0; i < deck.size(); i++)
+    	for (int i = 0; i < newDeck.size(); i++)
 		{
-    		System.out.println(deck.get(i).toString());
+    		System.out.println(newDeck.get(i).toString());
 			System.out.println();
 		}
     }
@@ -45,6 +70,58 @@ public abstract class Deck
     {
 		
     }
+
+	public void createBJDeck()
+	{	
+		setBJValues(Suits.CLUBS.toString());
+		setBJValues(Suits.DIAMONDS.toString());
+		setBJValues(Suits.HEARTS.toString());
+		setBJValues(Suits.SPADES.toString());
+	}
 	
-	abstract ArrayList<Card> createDeck(ArrayList<Card> deck);
+	public void setBJValues(String suitChoice)
+	{		
+		for (int value = 2; value <= MAX_CARD_VALUE; value++)
+		{
+			switch (value)
+		    {
+		        case 2:
+		        	newDeck.add(new Card("Two", suitChoice, value));
+		        	break;
+		        case 3:
+		        	newDeck.add(new Card("Three", suitChoice, value));
+		        	break;
+		        case 4:
+		        	newDeck.add(new Card("Four", suitChoice, value));
+		        	break;
+		        case 5:
+		        	newDeck.add(new Card("Five", suitChoice, value));
+		        	break;
+		        case 6:
+		        	newDeck.add(new Card("Six", suitChoice, value));
+		        	break;
+		        case 7:
+		        	newDeck.add(new Card("Seven", suitChoice, value));
+		        	break;
+		        case 8:
+		        	newDeck.add(new Card("Eight", suitChoice, value));
+		        	break;
+		        case 9:
+		        	newDeck.add(new Card("Nine", suitChoice, value));
+		        	break;
+		        case 10:
+		        	newDeck.add(new Card("Ten", suitChoice, value));
+		        	newDeck.add(new Card("Jack", suitChoice, value));
+		        	newDeck.add(new Card("Queen", suitChoice, value));
+		        	newDeck.add(new Card("King", suitChoice, value));
+		        	break;
+		        case 11:
+		        	newDeck.add(new Card("Ace", suitChoice, value));
+		        	break;
+		        default:
+		        	System.out.println("invalid value");
+		        	break;
+		    }  
+		}
+	}
 }
