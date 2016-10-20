@@ -19,4 +19,10 @@ public class TestDeckBJ {
 		assertEquals("King of hearts", deck.getCardInPosition(37).toString());
 		assertEquals("Ace of spades", deck.getCardInPosition(51).toString());
 	}
+	
+	@Test
+	public void testDrawRandomCard() {
+		deck.drawRandomCard();
+		assertEquals(51, deck.getSize());
+	}
 }
