@@ -6,25 +6,24 @@ public class CasinoDriver {
 	static final double BALANCE = 100;
 	static final int CHOICE1 = 1, CHOICE2 = 2, CHOICE3 = 3;
 	static Bank playersBank = new Bank(BALANCE);
-	static int gameChoice;
+	static String gameChoice;
+	static String input = "yes";
+	static Scanner scan;
 	
 	public static final void main(String[] args) 
 	{     
-		System.out.println("Do you want to play in the casino? (yes or no)");
-		Scanner scan = new Scanner(System.in);
-
-		String input = scan.nextLine();
-
+		scan = new Scanner(System.in);
+		
 		while (input.equals("yes"))
 		{
            System.out.println("You have $" + playersBank.getCurrentBalance()+ "  Press 1:Blackjack or 2:Poker");
-           gameChoice = scan.nextInt();
-          
-           if (gameChoice == 1)
+           gameChoice = scan.nextLine();
+        
+           if (gameChoice.equals("1"))
            {
                Blackjack.play();
            }      
-           else if (gameChoice == 2)
+           else if (gameChoice.equals("2"))
            {
                Poker.play(playersBank);
            }
@@ -33,7 +32,6 @@ public class CasinoDriver {
            {
         	   	System.out.println("Do you want to stay in the casino?");
         	   	input = scan.nextLine();
-        	   	//TODO: fix scanner bug
            }
            else
            {
@@ -43,6 +41,7 @@ public class CasinoDriver {
 		}
 	       
 		System.out.println("---exit---");
+		scan.close();
 	}
 }
 
