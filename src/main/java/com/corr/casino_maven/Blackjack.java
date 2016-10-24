@@ -36,7 +36,7 @@ public class Blackjack
 			}
  
 			while (isStillPlaying)
-			{
+			{	
 				System.out.println(usersTurnPrompt);
 				decision = CasinoDriver.scan.nextLine();
 				
@@ -56,6 +56,9 @@ public class Blackjack
 						Card newCard = currentDeck.drawRandomCard();
 						dealersHand.addCard(newCard);
 					}
+					else
+						break;
+					
 					System.out.println("Dealer's hand:  "+ dealersHand.printHand());
 
 					if (didLoseBlackjack(dealersHand))
@@ -65,10 +68,11 @@ public class Blackjack
 						System.out.println("$" + bet + "won");
 						isStillPlaying = false;
 					}
+					endGame();
 				}
 			}
                 
-			endGame();
+			
                                 
 			if (CasinoDriver.playersBank.isBroke())
 			{
@@ -96,13 +100,13 @@ public class Blackjack
 		if (didLoseBlackjack(playersHand))
 		{
 			System.out.println("You lost with hand value: " + BlackjackHandModifier.getHandValue(playersHand));
+			System.out.println("Dealers hand value: " + BlackjackHandModifier.getHandValue(dealersHand));
+
 			isStillPlaying = false;
 		}
 		else
 		{
 			System.out.println("You have:  " + playersHand.printHand());
-			System.out.println(usersTurnPrompt);
-			decision = CasinoDriver.scan.nextLine();
 		}	
 	}
 
@@ -152,6 +156,7 @@ public class Blackjack
 		{
 			System.out.println("--bust--");
 			CasinoDriver.playersBank.subtractMoney(bet);
+			System.out.println("Subtracting $" + bet + " from bank");
 			isStillPlaying = false;
 			return true;
 		}
@@ -160,17 +165,21 @@ public class Blackjack
 	
 	private static void endGame() 
 	{
-		if (BlackjackHandModifier.getHandValue(playersHand) != BlackjackHandModifier.getHandValue(dealersHand))
+		int pVal = BlackjackHandModifier.getHandValue(playersHand);
+		int dVal = BlackjackHandModifier.getHandValue(dealersHand);
+		if (pVal != dVal)
 		{
 			if (getWinnerName().equals("Dealer"))
 			{
 				CasinoDriver.playersBank.subtractMoney(bet);
-				System.out.println("Subtracting $" + bet + "from bank");
+				System.out.println("Players hand value: " + pVal);
+				System.out.println("Dealers hand value: " + dVal);
+				System.out.println("Subtracting $" + bet + " from bank");
 			}
 			else
 			{
 				CasinoDriver.playersBank.addMoney(bet);
-				System.out.println("Adding $" + bet + "from bank");
+				System.out.println("Adding $" + bet + " to bank");
 			}
 		}
 		else
