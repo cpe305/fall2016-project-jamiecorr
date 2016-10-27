@@ -1,4 +1,4 @@
-package edu.calpoly.cpe305;
+package edu.calpoly.cpe305.test;
 
 import static org.junit.Assert.*;
 
