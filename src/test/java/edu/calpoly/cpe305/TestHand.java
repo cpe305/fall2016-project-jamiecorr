@@ -1,11 +1,11 @@
-package com.corr.casino_maven;
+package edu.calpoly.cpe305;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import edu.calpoly.cpe305.casino.Card;
-import edu.calpoly.cpe305.casino.Hand;
+import edu.calpoly.cpe305.Card;
+import edu.calpoly.cpe305.Hand;
 
 public class TestHand {
 	Hand h = new Hand("Jamie");

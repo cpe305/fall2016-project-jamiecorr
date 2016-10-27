@@ -1,10 +1,10 @@
-package com.corr.casino_maven;
+package edu.calpoly.cpe305;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import edu.calpoly.cpe305.casino.Bank;
+import edu.calpoly.cpe305.Bank;
 
 public class TestBank 
 {

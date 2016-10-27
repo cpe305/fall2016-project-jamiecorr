@@ -1,10 +1,10 @@
-package com.corr.casino_maven;
+package edu.calpoly.cpe305;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import edu.calpoly.cpe305.casino.Deck;
+import edu.calpoly.cpe305.Deck;
 
 public class TestDeckBJ {
 	Deck deck = new Deck(1);
