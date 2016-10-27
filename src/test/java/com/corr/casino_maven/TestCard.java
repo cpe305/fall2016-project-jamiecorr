@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.calpoly.cpe305.casino.Card;
+
 
 public class TestCard
 {

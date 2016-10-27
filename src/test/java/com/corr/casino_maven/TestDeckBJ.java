@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.calpoly.cpe305.casino.Deck;
+
 public class TestDeckBJ {
 	Deck deck = new Deck(1);
 	

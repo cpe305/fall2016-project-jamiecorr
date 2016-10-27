@@ -1,4 +1,4 @@
-package com.corr.casino_maven;
+package edu.calpoly.cpe305.casino;
 
 import java.util.ArrayList;
 import java.util.Random;

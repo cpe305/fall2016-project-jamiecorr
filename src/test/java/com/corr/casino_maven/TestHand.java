@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.calpoly.cpe305.casino.Card;
+import edu.calpoly.cpe305.casino.Hand;
+
 public class TestHand {
 	Hand h = new Hand("Jamie");
 	
