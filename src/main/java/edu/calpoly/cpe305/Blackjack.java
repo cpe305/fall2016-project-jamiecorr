@@ -11,7 +11,6 @@ public class Blackjack {
   static final int TWENTY_ONE = 21;
   static final int DECK_MINIMUM = 15;
   static final int MIN_HIT = 16;
-  static String decision;
   static String input = "yes";
   static String usersTurnPrompt = "Press 'n' for next card, 's' to stand, 'd' to double down";
 
@@ -23,7 +22,7 @@ public class Blackjack {
       if (currentDeck.getSize() <= DECK_MINIMUM) {
         currentDeck = new Deck(CasinoDriver.CHOICE1);
       }
-      dealCards(currentDeck);
+      currentDeck = dealCards(currentDeck);
 
       System.out.println("How much do you want to bet this round?");
       bet = CasinoDriver.scan.nextBigDecimal();
@@ -37,18 +36,19 @@ public class Blackjack {
       }
 
       while (isStillPlaying) {
-        System.out.println(usersTurnPrompt);
-        decision = CasinoDriver.scan.nextLine();
-
+        String decision = CasinoDriver.scan.nextLine();
+        
         if (decision.equals("n")) {
-          dealNextCard(currentDeck);
+          currentDeck = dealNextCard(currentDeck);
         } else if (decision.equals("d")) {
           bet = bet.add(bet);
           System.out.println("Now betting $" + bet + "...");
-          dealNextCard(currentDeck);
+          currentDeck = dealNextCard(currentDeck);
         } else if (decision.equals("s")) {
           // dealer has to hit if 16 or less
           if (BlackjackHandModifier.getHandValue(dealersHand) <= MIN_HIT) {
+            System.out.println("Dealer's hand:  " + dealersHand.printHand());
+            System.out.println("Dealer is drawing another card...");
             Card newCard = currentDeck.drawRandomCard();
             dealersHand.addCard(newCard);
           } else {
@@ -65,12 +65,15 @@ public class Blackjack {
           }
           endGame();
         }
+        
+        System.out.println(usersTurnPrompt);
       }
 
 
 
       if (CasinoDriver.playersBank.isBroke()) {
-        System.out.println("No more money");
+        System.out.println("No more money: "
+              + CasinoDriver.playersBank.printCurrentBalance().toString());
         break;
       }
 
@@ -85,8 +88,8 @@ public class Blackjack {
   }
 
 
-  private static void dealNextCard(final Deck currentDeck) {
-    final Card newCard = currentDeck.drawRandomCard();
+  private static Deck dealNextCard(Deck thisDeck) {
+    Card newCard = thisDeck.drawRandomCard();
     playersHand.addCard(newCard);
 
     System.out.println("New Card:  " + newCard);
@@ -100,24 +103,28 @@ public class Blackjack {
     } else {
       System.out.println("You have:  " + playersHand.printHand());
     }
+    
+    return thisDeck;
   }
 
-  private static void dealCards(final Deck thisDeck) {
+  private static Deck dealCards(Deck thisDeck) {
     playersHand = new Hand("Player");
     dealersHand = new Hand("Dealer");
 
-    final Card playersCard1 = thisDeck.drawRandomCard();
-    final Card playersCard2 = thisDeck.drawRandomCard();
+    Card playersCard1 = thisDeck.drawRandomCard();
+    Card playersCard2 = thisDeck.drawRandomCard();
     playersHand.addCard(playersCard1);
     playersHand.addCard(playersCard2);
 
-    final Card dealersCard1 = thisDeck.drawRandomCard();
-    final Card dealersCard2 = thisDeck.drawRandomCard();
+    Card dealersCard1 = thisDeck.drawRandomCard();
+    Card dealersCard2 = thisDeck.drawRandomCard();
     dealersHand.addCard(dealersCard1);
     dealersHand.addCard(dealersCard2);
 
     System.out.println("2 cards dealt to each player, " + thisDeck.getSize()
         + " more cards in the deck");
+    
+    return thisDeck;
   }
 
   private static String getWinnerName() {
