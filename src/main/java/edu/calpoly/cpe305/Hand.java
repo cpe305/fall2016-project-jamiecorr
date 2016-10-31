@@ -2,7 +2,7 @@ package edu.calpoly.cpe305;
 
 import java.util.ArrayList;
 
-public class Hand implements Printer {
+public class Hand {
   private String playerName;
   private ArrayList<Card> hand;
   static final double ACE_VALUE = 14;

@@ -1,6 +1,6 @@
 package edu.calpoly.cpe305;
 
-public class BlackjackHandModifier {
+public class BlackjackHandEvaluator {
   private static final int TWENTY_ONE = 21;
   private static final int ACE_RESET = 10;
 
