@@ -12,23 +12,24 @@ public class Blackjack {
   static final int DECK_MINIMUM = 15;
   static final int MIN_HIT = 16;
   static String input = "yes";
-  static String usersTurnPrompt = "Press 'n' for next card, 's' to stand, 'd' to double down";
+  static String usersTurnPrompt = "Press 'n + enter' for next card, "
+      + "'s + enter' to stand, 'd + enter' to double down";
 
   public static void play() {
     Deck currentDeck = new Deck(CasinoDriver.CHOICE1);
 
     while (true) {
-      // reset deck if necessary
-      if (currentDeck.getSize() <= DECK_MINIMUM) {
-        currentDeck = new Deck(CasinoDriver.CHOICE1);
-      }
+      //deck set up
+      currentDeck = checkNumberOfCards(currentDeck);
       currentDeck = dealCards(currentDeck);
 
-      System.out.println("How much do you want to bet this round?");
+      System.out.println("How much do you want to bet this round? " 
+          + CasinoDriver.playersBank.printCurrentBalance().toString());
       bet = CasinoDriver.scan.nextBigDecimal();
+      testBetVadility();
 
-      System.out.println("Players cards:  " + playersHand.getCard(0) + " and "
-          + playersHand.getCard(1));
+      System.out.println("Players cards:  " + playersHand.getCard(0) 
+          + " and " + playersHand.getCard(1));
       System.out.println("Dealers cards:  " + dealersHand.getCard(1) + " and another card");
 
       if (didWinNaturally(playersHand)) {
@@ -37,43 +38,37 @@ public class Blackjack {
 
       while (isStillPlaying) {
         String decision = CasinoDriver.scan.nextLine();
-        
+
         if (decision.equals("n")) {
           currentDeck = dealNextCard(currentDeck);
         } else if (decision.equals("d")) {
-          bet = bet.add(bet);
-          System.out.println("Now betting $" + bet + "...");
+          playDoubleDown(bet);
           currentDeck = dealNextCard(currentDeck);
         } else if (decision.equals("s")) {
           // dealer has to hit if 16 or less
-          if (BlackjackHandEvaluator.getHandValue(dealersHand) <= MIN_HIT) {
-            System.out.println("Dealer's hand:  " + dealersHand.printHand());
-            System.out.println("Dealer is drawing another card...");
-            Card newCard = currentDeck.drawRandomCard();
-            dealersHand.addCard(newCard);
+          if (isSixteenOrLess()) {
+            dealerDraws(currentDeck);
           } else {
+            endGame();
             break;
           }
+        } else if (!decision.equals("")) {
+          System.out.println("Invalid choice. Try again");
+        }
 
-          System.out.println("Dealer's hand:  " + dealersHand.printHand());
-
-          if (didLoseBlackjack(dealersHand)) {
-            System.out.println("Dealer busted");
-            CasinoDriver.playersBank.addMoney(bet);
-            System.out.println("$" + bet + "won");
-            isStillPlaying = false;
-          }
+        if (BlackjackHandEvaluator.getHandValue(playersHand) == TWENTY_ONE) {
           endGame();
+          break;
         }
         
-        System.out.println(usersTurnPrompt);
+        if (isStillPlaying) {
+          System.out.println(usersTurnPrompt);
+        }
       }
 
-
-
       if (CasinoDriver.playersBank.isBroke()) {
-        System.out.println("No more money: "
-              + CasinoDriver.playersBank.printCurrentBalance().toString());
+        System.out.println("No more money: " 
+            + CasinoDriver.playersBank.printCurrentBalance().toString());
         break;
       }
 
@@ -87,6 +82,55 @@ public class Blackjack {
     }
   }
 
+  private static void playDoubleDown(BigDecimal betTester) {
+    BigDecimal currentBalance = CasinoDriver.playersBank.getCurrentBalance();
+    if ((betTester.add(betTester)).compareTo(currentBalance) == 1) {
+      System.out.println("Balance is too low to double down");
+      System.out.println("Current balance: " 
+          + CasinoDriver.playersBank.printCurrentBalance().toString());
+    } else {
+      bet = bet.add(bet);
+      System.out.println("Now betting $" + bet + "...");
+    }
+  }
+
+  private static void testBetVadility() {
+    BigDecimal currentBalance = CasinoDriver.playersBank.getCurrentBalance();
+    while (bet.compareTo(currentBalance) == 1) {
+      System.out.println("Please enter an amount less than or equal to " + currentBalance);
+      bet = CasinoDriver.scan.nextBigDecimal();
+    }
+  }
+
+  private static Deck checkNumberOfCards(Deck currentDeck) {
+    if (currentDeck.getSize() <= DECK_MINIMUM) {
+      currentDeck = new Deck(CasinoDriver.CHOICE1);
+    }
+    return currentDeck;
+  }
+
+  private static void playerWinsByDealerBust() {
+    System.out.println("Dealer busted with hand value " 
+        + BlackjackHandEvaluator.getHandValue(dealersHand));
+    CasinoDriver.playersBank.addMoney(bet);
+    System.out.println("Player won!!  Adding $" + bet + " to your bank!!");
+    isStillPlaying = false;
+  }
+
+  private static boolean isSixteenOrLess() {
+    return BlackjackHandEvaluator.getHandValue(dealersHand) <= MIN_HIT;
+  }
+
+  private static void dealerDraws(Deck thisDeck) {
+    System.out.println("Dealer's hand value is less than 17...so dealer is drawing another card");
+    Card newCard = thisDeck.drawRandomCard();
+    dealersHand.addCard(newCard);
+    System.out.println("Dealer's hand:  " + dealersHand.printHand());
+
+    if (didLoseBlackjack(dealersHand)) {
+      playerWinsByDealerBust();
+    }
+  }
 
   private static Deck dealNextCard(Deck thisDeck) {
     Card newCard = thisDeck.drawRandomCard();
@@ -95,7 +139,7 @@ public class Blackjack {
     System.out.println("New Card:  " + newCard);
 
     if (didLoseBlackjack(playersHand)) {
-      System.out.println("You lost with hand value: "
+      System.out.println("Player lost with hand value: " 
           + BlackjackHandEvaluator.getHandValue(playersHand));
       System.out.println("Dealers hand value: " + BlackjackHandEvaluator.getHandValue(dealersHand));
 
@@ -103,7 +147,7 @@ public class Blackjack {
     } else {
       System.out.println("You have:  " + playersHand.printHand());
     }
-    
+
     return thisDeck;
   }
 
@@ -121,9 +165,9 @@ public class Blackjack {
     dealersHand.addCard(dealersCard1);
     dealersHand.addCard(dealersCard2);
 
-    System.out.println("2 cards dealt to each player, " + thisDeck.getSize()
-        + " more cards in the deck");
-    
+    System.out.println("2 cards dealt to each player, " 
+        + thisDeck.getSize() + " more cards in the deck");
+
     return thisDeck;
   }
 
@@ -134,7 +178,7 @@ public class Blackjack {
     return pValue > dValue ? dealersHand.getPlayerName() : playersHand.getPlayerName();
   }
 
-  private static boolean didWinNaturally(final Hand hand) {
+  private static boolean didWinNaturally(Hand hand) {
     // if you have 21 to start you win 1.5 times your bet
     if (BlackjackHandEvaluator.getHandValue(hand) == TWENTY_ONE) {
       CasinoDriver.playersBank.addMoney(bet.multiply(BET_INCREASE));
@@ -145,11 +189,13 @@ public class Blackjack {
     return false;
   }
 
-  private static boolean didLoseBlackjack(final Hand hand) {
+  private static boolean didLoseBlackjack(Hand hand) {
     if (BlackjackHandEvaluator.getHandValue(hand) > TWENTY_ONE) {
-      System.out.println("--bust--");
-      CasinoDriver.playersBank.subtractMoney(bet);
-      System.out.println("Subtracting $" + bet + " from bank");
+      if (hand.getPlayerName().equals("Player")) {
+        System.out.println("--bust--");
+        CasinoDriver.playersBank.subtractMoney(bet);
+        System.out.println("Subtracting $" + bet + " from bank");
+      }
       isStillPlaying = false;
       return true;
     }
@@ -160,10 +206,11 @@ public class Blackjack {
     final int pVal = BlackjackHandEvaluator.getHandValue(playersHand);
     final int dVal = BlackjackHandEvaluator.getHandValue(dealersHand);
     if (pVal != dVal) {
+      System.out.println("Players hand value: " + pVal);
+      System.out.println("Dealers hand value: " + dVal);
+      
       if (getWinnerName().equals("Dealer")) {
         CasinoDriver.playersBank.subtractMoney(bet);
-        System.out.println("Players hand value: " + pVal);
-        System.out.println("Dealers hand value: " + dVal);
         System.out.println("Subtracting $" + bet + " from bank");
       } else {
         CasinoDriver.playersBank.addMoney(bet);

@@ -44,7 +44,7 @@ public class BlackjackHandEvaluator {
   }
 
   // before considering aces
-  public boolean testHandValue(Hand hand) {
+  public static boolean testHandValue(Hand hand) {
     // if over 21 sends to getValue to look at aces
     return getTotalValue(hand) > TWENTY_ONE;
   }
