@@ -25,11 +25,11 @@ public class Hand {
   }
 
   public String printHand() {
-    String handString = "";
+    StringBuilder bld = new StringBuilder();
     for (int i = 0; i < hand.size(); i++) {
-      handString += hand.get(i) + "  ";
+      bld.append(hand.get(i) + "  ");
     }
-    return handString;
+    return bld.toString();
   }
 
   public void print(String statement) {

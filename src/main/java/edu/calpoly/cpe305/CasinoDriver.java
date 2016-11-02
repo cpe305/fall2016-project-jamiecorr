@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class CasinoDriver {
-  static final BigDecimal BALANCE = new BigDecimal(100);
+  static final BigDecimal BALANCE = BigDecimal.valueOf(100);
   static final int CHOICE1 = 1;
   static final int CHOICE2 = 2;
   static Bank playersBank = new Bank(BALANCE);
@@ -15,14 +15,14 @@ public class CasinoDriver {
   public static final void main(String[] args) {
     scan = new Scanner(System.in);
 
-    while (input.equals("yes")) {
+    while ("yes".equals(input)) {
       System.out.println("You have $" + playersBank.getCurrentBalance() 
           + "  Press 1:Blackjack or 2:Poker");
       gameChoice = scan.nextLine();
 
-      if (gameChoice.equals("1")) {
+      if ("1".equals(gameChoice)) {
         Blackjack.play();
-      } else if (gameChoice.equals("2")) {
+      } else if ("2".equals(gameChoice)) {
         //Poker.play(playersBank);
         System.out.println("Poker not implemented yet.");
       }

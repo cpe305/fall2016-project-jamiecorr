@@ -3,6 +3,10 @@ package edu.calpoly.cpe305;
 public class BlackjackHandEvaluator {
   private static final int TWENTY_ONE = 21;
   private static final int ACE_RESET = 10;
+  
+  private BlackjackHandEvaluator() {
+    
+  }
 
   public static int getHandValue(Hand hand) {
     int total = getTotalValue(hand);
@@ -32,7 +36,7 @@ public class BlackjackHandEvaluator {
   public static int countAces(Hand hand) {
     int count = 0;
     for (int i = 0; i < hand.size(); i++) {
-      if (hand.getCard(i).getName().equals("Ace")) {
+      if ("Ace".equals(hand.getCard(i).getName())) {
         count++;
       }
     }

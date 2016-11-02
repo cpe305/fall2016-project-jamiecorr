@@ -14,7 +14,7 @@ public class Bank {
   }
 
   public void subtractMoney(BigDecimal amount) {
-    money = money.subtract(money);
+    money = money.subtract(amount);
   }
 
   public boolean isBroke() {
