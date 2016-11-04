@@ -211,11 +211,14 @@ public class Blackjack {
   private static void endGame() {
     final int pVal = BlackjackHandEvaluator.getHandValue(playersHand);
     final int dVal = BlackjackHandEvaluator.getHandValue(dealersHand);
+    
+    System.out.println("Player's hand:  " + playersHand.printHand());
+    System.out.println("Players hand value: " + pVal);
+    System.out.println("Dealer's hand:  " + dealersHand.printHand());
+    System.out.println("Dealers hand value: " + dVal);
+    
     if (pVal != dVal) {
-      System.out.println("Players hand value: " + pVal);
-      System.out.println("Dealers hand value: " + dVal);
-      
-      if ("Dealer".equals(getWinnerName())) {
+     if ("Dealer".equals(getWinnerName())) {
         CasinoDriver.playersBank.subtractMoney(bet);
         System.out.println("Subtracting $" + bet + " from bank");
       } else {

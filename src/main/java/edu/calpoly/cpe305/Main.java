@@ -23,7 +23,7 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("view/RootLayout.fxml"));
-    primaryStage.setTitle("Hello World");
+    primaryStage.setTitle("Welcome to Card Casino");
     Scene scene = new Scene(root, 600, 400);
     primaryStage.setScene(scene);
     primaryStage.show();
