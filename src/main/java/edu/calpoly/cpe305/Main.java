@@ -8,8 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Main extends Application implements Observer {
   private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+  
+  private Subject subject;
+  
+  public Main(Subject subject) {
+    this.subject = subject;
+  }
   
   @Override
   public void start(Stage primaryStage) {
@@ -26,5 +32,14 @@ public class Main extends Application {
 
   public static void main(String[] args) {
     launch(args);
+  }
+
+  @Override
+  public void update(Subject subject) {
+	if (subject instanceof Game) {
+		Game game = (Game)subject;
+		// perform something complex as a result of getting info from the game
+		// add methods to game if you need to get more info than just a String.
+	}
   }
 }
