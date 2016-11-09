@@ -218,7 +218,7 @@ public class Blackjack {
     System.out.println("Dealers hand value: " + dVal);
     
     if (pVal != dVal) {
-     if ("Dealer".equals(getWinnerName())) {
+      if ("Dealer".equals(getWinnerName())) {
         CasinoDriver.playersBank.subtractMoney(bet);
         System.out.println("Subtracting $" + bet + " from bank");
       } else {
