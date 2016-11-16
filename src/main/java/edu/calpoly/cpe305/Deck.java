@@ -22,9 +22,12 @@ public class Deck {
   Suits suits;
   private ArrayList<Card> newDeck;
   private static final int MAX_CARD_VALUE = 11;
+  private static final int NONFACECARD_STARTING_VALUE = 2;
+  private static final int FACECARD_STARTING_VALUE = 10;
+  private static final int MIN_CARD_VALUE = 1;
 
   public Deck(int gameChoice) {
-    newDeck = new ArrayList<Card>();
+    newDeck = new ArrayList<>();
     if (gameChoice == 1) {
       createDeck();
     }
@@ -54,56 +57,33 @@ public class Deck {
     }
   }
 
-  public void print(String statement) {
-
-  }
-
   public void createDeck() {
     setValues(Suits.CLUBS.toString());
     setValues(Suits.DIAMONDS.toString());
     setValues(Suits.HEARTS.toString());
     setValues(Suits.SPADES.toString());
   }
+  
+  private void setValues(String suit) {
+    set_NonFaceCard_Values(suit);
+    set_FaceCard_Values(suit);
+  }
 
-  public void setValues(String suitChoice) {
-    for (int value = 2; value <= MAX_CARD_VALUE; value++) {
-      switch (value) {
-        case 2:
-          newDeck.add(new Card("Two", suitChoice, value));
-          break;
-        case 3:
-          newDeck.add(new Card("Three", suitChoice, value));
-          break;
-        case 4:
-          newDeck.add(new Card("Four", suitChoice, value));
-          break;
-        case 5:
-          newDeck.add(new Card("Five", suitChoice, value));
-          break;
-        case 6:
-          newDeck.add(new Card("Six", suitChoice, value));
-          break;
-        case 7:
-          newDeck.add(new Card("Seven", suitChoice, value));
-          break;
-        case 8:
-          newDeck.add(new Card("Eight", suitChoice, value));
-          break;
-        case 9:
-          newDeck.add(new Card("Nine", suitChoice, value));
-          break;
-        case 10:
-          newDeck.add(new Card("Ten", suitChoice, value));
-          newDeck.add(new Card("Jack", suitChoice, value));
-          newDeck.add(new Card("Queen", suitChoice, value));
-          newDeck.add(new Card("King", suitChoice, value));
-          break;
-        case 11:
-          newDeck.add(new Card("Ace", suitChoice, value));
-          break;
-        default:
-          System.out.println("invalid value");
-          break;
+  private void set_NonFaceCard_Values(String suitChoice) {
+    for (int value = NONFACECARD_STARTING_VALUE; value < FACECARD_STARTING_VALUE; value++) {
+      newDeck.add(new Card(value, suitChoice, value));
+    }
+  }
+
+  private void set_FaceCard_Values(String suitChoice) {
+    for (int value = FACECARD_STARTING_VALUE; value < MAX_CARD_VALUE; value++) {
+      if (value == FACECARD_STARTING_VALUE) {
+        newDeck.add(new Card(10, suitChoice, value));
+        newDeck.add(new Card("Jack", suitChoice, value));
+        newDeck.add(new Card("Queen", suitChoice, value));
+        newDeck.add(new Card("King", suitChoice, value));
+      } else {
+        newDeck.add(new Card("Ace", suitChoice, value));
       }
     }
   }

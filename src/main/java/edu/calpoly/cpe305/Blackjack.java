@@ -27,7 +27,7 @@ public class Blackjack {
       currentDeck = checkNumberOfCards(currentDeck);
       currentDeck = dealCards(currentDeck);
 
-      System.out.println("How much do you want to bet this round? " 
+      LOGGER.log( Level.FINE, "How much do you want to bet this round? " 
           + CasinoDriver.playersBank.printCurrentBalance());
       bet = CasinoDriver.scan.nextBigDecimal();
       testBetVadility();
