@@ -13,11 +13,13 @@ public class CasinoDriver {
   static Scanner scan;
 
   public static final void main(String[] args) {
+    
+    private static final Logger LOGGER = Logger.getLogger(Logger.class.getName());
+    
     scan = new Scanner(System.in);
 
     while (input.equals("yes")) {
-      System.out.println("You have $" + playersBank.getCurrentBalance() 
-          + "  Press 1:Blackjack or 2:Poker");
+      LOGGER.log( Level.FINE, "You have ${0}" + playersBank.getCurrentBalance() + "  Press 1:Blackjack or 2:Poker");
       gameChoice = scan.nextLine();
 
       if (gameChoice.equals("1")) {
@@ -27,15 +29,15 @@ public class CasinoDriver {
       }
 
       if (!playersBank.isBroke()) {
-        System.out.println("Do you want to stay in the casino?");
+        LOGGER.log( Level.FINE,"Do you want to stay in the casino?");
         input = scan.nextLine();
       } else {
-        System.out.println("No money left, now exiting casino.");
+        LOGGER.log( Level.FINE,"No money left, now exiting casino.");
         break;
       }
     }
 
-    System.out.println("---exit---");
+    LOGGER.log("---exit---");
     scan.close();
   }
 }
