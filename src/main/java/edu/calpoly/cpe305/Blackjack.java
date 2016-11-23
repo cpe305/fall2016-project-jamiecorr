@@ -7,7 +7,7 @@ public class Blackjack {
   static Hand dealersHand;
   static boolean isStillPlaying = true;
   static BigDecimal bet;
-  static final BigDecimal BET_INCREASE = new BigDecimal(1.5);
+  static final BigDecimal BET_INCREASE = BigDecimal.valueOf(1.5);
   static final int TWENTY_ONE = 21;
   static final int DECK_MINIMUM = 15;
   static final int MIN_HIT = 16;
@@ -40,13 +40,13 @@ public class Blackjack {
         System.out.println(usersTurnPrompt);
         decision = CasinoDriver.scan.nextLine();
 
-        if (decision.equals("n")) {
+        if ("n".equals(decision)) {
           dealNextCard(currentDeck);
-        } else if (decision.equals("d")) {
+        } else if ("d".equals(decision)) {
           bet = bet.add(bet);
           System.out.println("Now betting $" + bet + "...");
           dealNextCard(currentDeck);
-        } else if (decision.equals("s")) {
+        } else if ("s".equals(decision)) {
           // dealer has to hit if 16 or less
           if (BlackjackHandEvaluator.getHandValue(dealersHand) <= MIN_HIT) {
             Card newCard = currentDeck.drawRandomCard();
@@ -76,7 +76,7 @@ public class Blackjack {
 
       System.out.println("New hand?");
       input = CasinoDriver.scan.nextLine();
-      if (input.equals("no")) {
+      if ("no".equals(input)) {
         break;
       } else {
         isStillPlaying = true;
@@ -153,7 +153,7 @@ public class Blackjack {
     final int pVal = BlackjackHandEvaluator.getHandValue(playersHand);
     final int dVal = BlackjackHandEvaluator.getHandValue(dealersHand);
     if (pVal != dVal) {
-      if (getWinnerName().equals("Dealer")) {
+      if ("Dealer".equals(getWinnerName())) {
         CasinoDriver.playersBank.subtractMoney(bet);
         System.out.println("Players hand value: " + pVal);
         System.out.println("Dealers hand value: " + dVal);

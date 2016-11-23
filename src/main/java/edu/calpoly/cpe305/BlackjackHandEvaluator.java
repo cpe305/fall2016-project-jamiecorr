@@ -32,7 +32,7 @@ public class BlackjackHandEvaluator {
   public static int countAces(Hand hand) {
     int count = 0;
     for (int i = 0; i < hand.size(); i++) {
-      if (hand.getCard(i).getName().equals("Ace")) {
+      if ("Ace".equals(hand.getCard(i).getName())) {
         count++;
       }
     }
