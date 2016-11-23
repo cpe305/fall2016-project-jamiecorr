@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
   @Override
-  public void start(Stage primaryStage) {
+  public void start(Stage primaryStage) throws MyOwnRuntimeException {
     try {
       BorderPane root = new BorderPane();
       Scene scene = new Scene(root, 400, 400);
@@ -17,7 +17,7 @@ public class Main extends Application {
       primaryStage.show();
     } catch (Exception exc) {
       exc.printStackTrace();
-      throw new RuntimeException(exc);
+      throw new MyOwnRuntimeException("My Message");
     }
   }
 
