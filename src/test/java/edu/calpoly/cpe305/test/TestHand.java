@@ -17,7 +17,7 @@ public class TestHand {
   
   @Test
   public void testSize() {
-    assertEquals(2, hand.size());
+    assertEquals(0, hand.size());
   }
 
   @Test
