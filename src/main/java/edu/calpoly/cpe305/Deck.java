@@ -2,8 +2,12 @@ package edu.calpoly.cpe305;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Deck {
+  private static final Logger LOGGER = Logger.getLogger(Logger.class.getName());
+
   public enum Suits {
     CLUBS("clubs"), DIAMONDS("diamonds"), HEARTS("hearts"), SPADES("spades");
 
@@ -24,7 +28,6 @@ public class Deck {
   private static final int MAX_CARD_VALUE = 11;
   private static final int NONFACECARD_STARTING_VALUE = 2;
   private static final int FACECARD_STARTING_VALUE = 10;
-  private static final int MIN_CARD_VALUE = 1;
 
   public Deck(int gameChoice) {
     newDeck = new ArrayList<>();
@@ -52,8 +55,7 @@ public class Deck {
 
   public void printCards() {
     for (int i = 0; i < newDeck.size(); i++) {
-      System.out.println(newDeck.get(i).toString());
-      System.out.println();
+      LOGGER.log(Level.FINE, newDeck.get(i).toString() + "\n");
     }
   }
 
