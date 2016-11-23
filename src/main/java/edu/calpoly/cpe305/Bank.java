@@ -18,7 +18,7 @@ public class Bank {
   }
 
   public boolean isBroke() {
-    if (money.compareTo(BigDecimal.ZERO) == 1) {
+    if (money.compareTo(BigDecimal.ZERO) > 0) {
       return true;
     }
     return false;
