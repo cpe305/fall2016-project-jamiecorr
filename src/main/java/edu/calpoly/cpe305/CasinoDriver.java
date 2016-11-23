@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 
 public class CasinoDriver {
   static final BigDecimal BALANCE = new BigDecimal(100);
-  static final int CHOICE1 = 1;
-  static final int CHOICE2 = 2;
+  static final int PLAY_BJ = 1;
+  static final int PLAY_POKER = 2;
   static Bank playersBank = new Bank(BALANCE);
   static String gameChoice;
   static String input = "yes";

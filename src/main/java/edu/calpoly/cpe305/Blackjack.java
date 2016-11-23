@@ -16,12 +16,12 @@ public class Blackjack {
   static String usersTurnPrompt = "Press 'n' for next card, 's' to stand, 'd' to double down";
 
   public static void play() {
-    Deck currentDeck = new Deck(CasinoDriver.CHOICE1);
+    Deck currentDeck = new Deck(CasinoDriver.PLAY_BJ);
 
     while (true) {
       // reset deck if necessary
       if (currentDeck.getSize() <= DECK_MINIMUM) {
-        currentDeck = new Deck(CasinoDriver.CHOICE1);
+        currentDeck = new Deck(CasinoDriver.PLAY_BJ);
       }
       dealCards(currentDeck);
 
