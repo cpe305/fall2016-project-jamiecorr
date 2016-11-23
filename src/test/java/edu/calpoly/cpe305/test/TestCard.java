@@ -21,7 +21,7 @@ public class TestCard {
   
   @Test
   public void testGetName() {
-    assertEquals("2", card.getValue());
+    assertEquals("2", card.getName());
   }
 
   @Test
