@@ -2,13 +2,13 @@ package edu.calpoly.cpe305;
 
 import java.util.ArrayList;
 
-public class Hand {
+public class Hand<E> {
   private String playerName;
-  private ArrayList<Card> hand;
+  private ArrayList<E> currentHand;
   static final double ACE_VALUE = 14;
 
   public Hand(String playerName) {
-    hand = new ArrayList<Card>();
+    currentHand = new ArrayList<E>();
     this.playerName = playerName;
   }
 
@@ -17,26 +17,23 @@ public class Hand {
   }
 
   public Card getCard(int idx) {
-    return hand.get(idx);
+    return (Card) currentHand.get(idx);
   }
 
+  @SuppressWarnings("unchecked")
   public void addCard(Card card) {
-    hand.add(card);
+    currentHand.add((E) card);
   }
 
   public String printHand() {
-    StringBuilder handString = new StringBuilder();
-    for (int i = 0; i < hand.size(); i++) {
-      handString.append(hand.get(i) + "  ");
+    StringBuilder currentHandString = new StringBuilder();
+    for (int i = 0; i < currentHand.size(); i++) {
+      currentHandString.append(currentHand.get(i) + "  ");
     }
-    return handString.toString();
-  }
-
-  public void print(String statement) {
-
+    return currentHandString.toString();
   }
 
   public int size() {
-    return hand.size();
+    return currentHand.size();
   }
 }

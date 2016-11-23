@@ -14,6 +14,11 @@ public class TestHand {
   public void testGetPlayerName() {
     assertEquals("Jamie", hand.getPlayerName());
   }
+  
+  @Test
+  public void testSize() {
+    assertEquals(2, hand.size());
+  }
 
   @Test
   public void testGetCardInPosition() {
