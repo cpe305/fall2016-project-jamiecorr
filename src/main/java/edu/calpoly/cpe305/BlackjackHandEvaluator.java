@@ -12,7 +12,7 @@ public class BlackjackHandEvaluator {
       if (countAces(hand) == 1) {
         total -= (ACE_RESET * countAces(hand));
       }  else if (countAces(hand) > 1) {
-        // TODO: check if necessary
+        // to do: check if necessary
         total -= (ACE_RESET * (countAces(hand) - 1));
       }
     }

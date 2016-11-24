@@ -2,8 +2,13 @@ package edu.calpoly.cpe305;
 
 public class MyOwnRuntimeException extends Exception {
 
-  public MyOwnRuntimeException(String string) {
-    // TODO Auto-generated constructor stub
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
+  public MyOwnRuntimeException(String message) {
+    super(message);
   }
 
 }
