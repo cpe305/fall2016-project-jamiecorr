@@ -34,8 +34,8 @@ public class TestEvaluator {
     int highValue = BlackjackHandEvaluator.getTotalValue(myHand);
     int highTotValue = BlackjackHandEvaluator.getTotalValue(myHand);
 
-    assertEquals(42, highValue);
-    assertEquals(42, highTotValue);
+    assertEquals(52, highValue);
+    assertEquals(52, highTotValue);
 
   }
 
