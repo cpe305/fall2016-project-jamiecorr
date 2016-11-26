@@ -25,7 +25,7 @@ public class TestEvaluator {
     int lowValue = BlackjackHandEvaluator.getHandValue(myHand);
     int lowTotValue = BlackjackHandEvaluator.getTotalValue(myHand);
     assertEquals(13, lowValue);
-    assertEquals(13, lowTotValue);
+    assertEquals(23, lowTotValue);
 
     myHand.addCard(card4);
     myHand.addCard(card5);
