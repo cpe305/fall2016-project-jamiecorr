@@ -39,7 +39,7 @@ public class BlackjackHandEvaluator {
     return count;
   }
 
-  public static boolean hasBustWithAces(Hand hand) {
+  private static boolean hasBustWithAces(Hand hand) {
     return getTotalValue(hand) > TWENTY_ONE;
   }
 

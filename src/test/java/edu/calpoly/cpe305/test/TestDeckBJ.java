@@ -1,10 +1,10 @@
 package edu.calpoly.cpe305.test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import edu.calpoly.cpe305.Deck;
+
+import org.junit.Test;
 
 public class TestDeckBJ {
   Deck deck = new Deck(1);
