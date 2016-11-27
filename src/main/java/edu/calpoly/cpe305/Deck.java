@@ -24,16 +24,16 @@ public class Deck {
   }
 
   Suits suits;
-  private ArrayList<Card> newDeck;
-  private static final int MAX_CARD_VALUE = 11;
+  private ArrayList<Card> newDeck; // same as newDeck in Poker
+  private static final int MAX_CARD_POSITION = 14;
   private static final int NONFACECARD_STARTING_VALUE = 2;
-  private static final int FACECARD_STARTING_VALUE = 10;
+  private static final int FACECARD_VALUE = 10;
+  private String name;
 
-  public Deck(int gameChoice) {
+  public Deck(String inputName) {
     newDeck = new ArrayList<>();
-    if (gameChoice == 1) {
-      createDeck();
-    }
+    createDeck();
+    name = inputName;
   }
 
   public int getSize() {
@@ -55,7 +55,7 @@ public class Deck {
 
   public void printCards() {
     for (int i = 0; i < newDeck.size(); i++) {
-      LOGGER.log(Level.FINE, newDeck.get(i).toString() + "\n");
+      System.out.print(newDeck.get(i).toString() + "\n");
     }
   }
 
@@ -65,28 +65,22 @@ public class Deck {
     setValues(Suits.HEARTS.toString());
     setValues(Suits.SPADES.toString());
   }
-  
+
   private void setValues(String suit) {
     set_NonFaceCard_Values(suit);
     set_FaceCard_Values(suit);
   }
 
   private void set_NonFaceCard_Values(String suitChoice) {
-    for (int value = NONFACECARD_STARTING_VALUE; value < FACECARD_STARTING_VALUE; value++) {
-      newDeck.add(new Card(String.valueOf(value), suitChoice, value));
+    for (int value = NONFACECARD_STARTING_VALUE; value <= FACECARD_VALUE; value++) {
+      newDeck.add(new Card(String.valueOf(value), suitChoice, value, value));
     }
   }
 
   private void set_FaceCard_Values(String suitChoice) {
-    for (int value = FACECARD_STARTING_VALUE; value <= MAX_CARD_VALUE; value++) {
-      if (value == FACECARD_STARTING_VALUE) {
-        newDeck.add(new Card(String.valueOf(10), suitChoice, value));
-        newDeck.add(new Card("Jack", suitChoice, value));
-        newDeck.add(new Card("Queen", suitChoice, value));
-        newDeck.add(new Card("King", suitChoice, value));
-      } else {
-        newDeck.add(new Card("Ace", suitChoice, value));
-      }
-    }
+    newDeck.add(new Card("Jack", suitChoice, FACECARD_VALUE, 11));
+    newDeck.add(new Card("Queen", suitChoice, FACECARD_VALUE, 12));
+    newDeck.add(new Card("King", suitChoice, FACECARD_VALUE, 13));
+    newDeck.add(new Card("Ace", suitChoice, FACECARD_VALUE + 1, 14));
   }
 }

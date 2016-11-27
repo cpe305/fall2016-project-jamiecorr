@@ -1,9 +1,13 @@
 package edu.calpoly.cpe305;
 
-public class BlackjackHandEvaluator {
+public class BlackjackHandEvaluator extends Hand {
   private static final int TWENTY_ONE = 21;
   private static final int ACE_RESET = 10;
 
+  public BlackjackHandEvaluator(String inputName) {
+    super(inputName);
+  }
+  
   public static int getHandValue(Hand hand) {
     int total = getTotalValue(hand);
 

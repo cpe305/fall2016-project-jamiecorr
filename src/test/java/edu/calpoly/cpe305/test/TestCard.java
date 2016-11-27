@@ -7,7 +7,7 @@ import org.junit.Test;
 import edu.calpoly.cpe305.Card;
 
 public class TestCard {
-  Card card = new Card("2", "clubs", 2);
+  Card card = new Card("2", "clubs", 2, 2);
 
   @Test
   public void testGetSuit() {
@@ -22,6 +22,11 @@ public class TestCard {
   @Test
   public void testGetName() {
     assertEquals("2", card.getName());
+  }
+  
+  @Test
+  public void testGetPosition() {
+    assertEquals(2, card.getPosition());
   }
 
   @Test

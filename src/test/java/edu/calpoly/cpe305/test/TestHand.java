@@ -22,7 +22,7 @@ public class TestHand {
 
   @Test
   public void testGetCardInPosition() {
-    Card card = new Card("Two", "clubs", 5);
+    Card card = new Card("Two", "clubs", 2, 2);
     myHand.addCard(card);
 
     assertEquals(card, myHand.getCard(0));
@@ -30,8 +30,8 @@ public class TestHand {
   
   @Test
   public void testPrintHand() {
-    Card card1 = new Card("2", "clubs", 2);
-    Card card2 = new Card("10", "hearts", 10);
+    Card card1 = new Card("2", "clubs", 2, 2);
+    Card card2 = new Card("10", "hearts", 10, 10);
     
     myHand.addCard(card1);
     myHand.addCard(card2);

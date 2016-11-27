@@ -22,12 +22,6 @@ public class CasinoDriver {
   public static final void main(String[] args) {
     scan = new Scanner(System.in);
 
-    GameFactory gameFactory = new GameFactory();
-    Deck deckB = gameFactory.getDeck("BLACKJACK");
-    deckB.createDeck();
-    Deck deckP = gameFactory.getDeck("POKER");
-    deckP.createDeck();
-
     while ("yes".equals(input)) {
       System.out.println("You have $" + playersBank.getCurrentBalance() 
           + "  Press 1:Blackjack or 2:Poker");
