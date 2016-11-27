@@ -4,13 +4,10 @@ import java.math.BigDecimal;
 
 public class Poker {
   public static void play(Bank bank) {
-    // use escape to get out of loops
-    int escape = 0;
-
     System.out.println("New Hand?");
     String input = CasinoDriver.scan.nextLine();
 
-    while (input.equals("yes")) {
+    while ("yes".equals(input)) {
       Deck currentDeck = new Deck("Jim");
       currentDeck.createDeck();
 
@@ -37,14 +34,12 @@ public class Poker {
       System.out.println("Do you want to stay with these cards?");
       String answer = CasinoDriver.scan.nextLine();
 
-      if (answer.equals("no")) {
+      if ("no".equals(answer)) {
         System.out.println("Enter which cards you want to change (ex. 1,4,5)");
         String cards = CasinoDriver.scan.nextLine();
         user.reDeal(cards, currentDeck);
-      } else {
-        escape = 0;
       }
-
+      
       user.organize();
       System.out.println(user);
 

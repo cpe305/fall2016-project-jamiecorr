@@ -35,7 +35,7 @@ public class PokerHandEvaluator extends Hand {
     boolean twoPairs = false;
 
     // count same cards
-    int count = 0;
+    int count;
     int number = 0;
     for (int i = 0; i < 4; i++) {
       count = 0;
@@ -89,7 +89,7 @@ public class PokerHandEvaluator extends Hand {
   // 3 of a kind
   public boolean hasTriple() {
     boolean isTriple = false;
-    int count = 0;
+    int count;
 
     // escape loop if 3 of a kind
     int finished = 10;

@@ -35,8 +35,12 @@ public class Card {
   }
 
   // same cards if same position
-  public boolean equals(Card test) {
-    return (position == test.getPosition());
+  @Override
+  public boolean equals(Object test) {
+    if (test != null) {
+      return (position == ((Card) test).getPosition());
+    }
+    return false;
   }
 
   // same face cards
