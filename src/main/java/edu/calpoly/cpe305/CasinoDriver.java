@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CasinoDriver {
+
   static final BigDecimal BALANCE = BigDecimal.valueOf(100);
   static final int PLAY_BJ = 1;
   static final int PLAY_POKER = 2;
@@ -15,17 +16,21 @@ public class CasinoDriver {
   static Scanner scan;
   private static final Logger LOGGER = Logger.getLogger(Logger.class.getName());
 
+  public CasinoDriver() {
+  }
+
   public static final void main(String[] args) {
     scan = new Scanner(System.in);
-    
+
     GameFactory gameFactory = new GameFactory();
-    Deck bDeck = gameFactory.getDeck("BLACKJACK");
-    bDeck.createDeck();
-    Deck pDeck = gameFactory.getDeck("POKER");
-    pDeck.createDeck();
+    Deck deckB = gameFactory.getDeck("BLACKJACK");
+    deckB.createDeck();
+    Deck deckP = gameFactory.getDeck("POKER");
+    deckP.createDeck();
 
     while ("yes".equals(input)) {
-      System.out.println("You have $" + playersBank.getCurrentBalance() + "  Press 1:Blackjack or 2:Poker");
+      System.out.println("You have $" + playersBank.getCurrentBalance() 
+          + "  Press 1:Blackjack or 2:Poker");
       gameChoice = scan.nextLine();
 
       if ("1".equals(gameChoice)) {

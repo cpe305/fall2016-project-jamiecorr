@@ -2,13 +2,13 @@ package edu.calpoly.cpe305;
 
 import java.util.ArrayList;
 
-public class Hand<E> {
+public class Hand {
   private String playerName;
-  private ArrayList<E> currentHand;
+  private ArrayList<Card> currentHand;
   static final double ACE_VALUE = 14;
 
   public Hand(String playerName) {
-    currentHand = new ArrayList<E>();
+    currentHand = new ArrayList<>();
     this.playerName = playerName;
   }
 
@@ -20,9 +20,8 @@ public class Hand<E> {
     return (Card) currentHand.get(idx);
   }
 
-  @SuppressWarnings("unchecked")
   public void addCard(Card card) {
-    currentHand.add((E) card);
+    currentHand.add(card);
   }
 
   public String printHand() {

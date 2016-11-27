@@ -85,6 +85,12 @@ public class Blackjack {
   }
 
 
+  public Blackjack() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+
   private static void dealNextCard(final Deck currentDeck) {
     final Card newCard = currentDeck.drawRandomCard();
     playersHand.addCard(newCard);

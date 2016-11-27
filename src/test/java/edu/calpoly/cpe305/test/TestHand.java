@@ -8,23 +8,35 @@ import edu.calpoly.cpe305.Card;
 import edu.calpoly.cpe305.Hand;
 
 public class TestHand {
-  Hand hand = new Hand("Jamie");
+  Hand myHand = new Hand("Jamie");
 
   @Test
   public void testGetPlayerName() {
-    assertEquals("Jamie", hand.getPlayerName());
+    assertEquals("Jamie", myHand.getPlayerName());
   }
   
   @Test
   public void testSize() {
-    assertEquals(0, hand.size());
+    assertEquals(0, myHand.size());
   }
 
   @Test
   public void testGetCardInPosition() {
     Card card = new Card("Two", "clubs", 5);
-    hand.addCard(card);
+    myHand.addCard(card);
 
-    assertEquals(card, hand.getCard(0));
+    assertEquals(card, myHand.getCard(0));
+  }
+  
+  @Test
+  public void testPrintHand() {
+    Card card1 = new Card("2", "clubs", 2);
+    Card card2 = new Card("10", "hearts", 10);
+    
+    myHand.addCard(card1);
+    myHand.addCard(card2);
+    
+    String output = myHand.printHand();
+    assertTrue("2 of clubs  10 of hearts  ".equals(output));
   }
 }
