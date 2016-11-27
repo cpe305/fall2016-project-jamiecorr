@@ -15,6 +15,8 @@ public class TestEvaluator {
   Card card4 = new Card("Jack", "diamonds", 10);
   Card card5 = new Card("Jack", "diamonds", 10);
   Card card6 = new Card("9", "spades", 9);
+  Card card7 = new Card("Ace", "spades", 11);
+
 
   @Test
   public void testGetHandValue() {
@@ -30,12 +32,13 @@ public class TestEvaluator {
     myHand.addCard(card4);
     myHand.addCard(card5);
     myHand.addCard(card6);
+    myHand.addCard(card7);
 
-    int highValue = BlackjackHandEvaluator.getTotalValue(myHand);
+    int highValue = BlackjackHandEvaluator.getHandValue(myHand);
     int highTotValue = BlackjackHandEvaluator.getTotalValue(myHand);
 
-    assertEquals(52, highValue);
-    assertEquals(52, highTotValue);
+    assertEquals(43, highValue);
+    assertEquals(63, highTotValue);
 
   }
 

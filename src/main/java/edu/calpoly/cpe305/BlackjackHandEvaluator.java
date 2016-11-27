@@ -9,12 +9,7 @@ public class BlackjackHandEvaluator {
 
     if (countAces(hand) > 0 && hasBustWithAces(hand)) {
       // if ace makes you bust then count it as 1
-      if (countAces(hand) == 1) {
-        total -= (ACE_RESET * countAces(hand));
-      }  else if (countAces(hand) > 1) {
-        // to do: check if necessary
-        total -= (ACE_RESET * (countAces(hand) - 1));
-      }
+      total -= (ACE_RESET * countAces(hand));
     }
     return total;
   }

@@ -48,7 +48,7 @@ public class Blackjack {
           dealNextCard(currentDeck);
         } else if (decision.equals("s")) {
           // dealer has to hit if 16 or less
-          if (BlackjackHandModifier.getHandValue(dealersHand) <= MIN_HIT) {
+          if (BlackjackHandEvaluator.getHandValue(dealersHand) <= MIN_HIT) {
             Card newCard = currentDeck.drawRandomCard();
             dealersHand.addCard(newCard);
           } else {
@@ -93,8 +93,8 @@ public class Blackjack {
 
     if (didLoseBlackjack(playersHand)) {
       System.out.println("You lost with hand value: "
-          + BlackjackHandModifier.getHandValue(playersHand));
-      System.out.println("Dealers hand value: " + BlackjackHandModifier.getHandValue(dealersHand));
+          + BlackjackHandEvaluator.getHandValue(playersHand));
+      System.out.println("Dealers hand value: " + BlackjackHandEvaluator.getHandValue(dealersHand));
 
       isStillPlaying = false;
     } else {
@@ -121,15 +121,15 @@ public class Blackjack {
   }
 
   private static String getWinnerName() {
-    final int pValue = TWENTY_ONE - BlackjackHandModifier.getHandValue(playersHand);
-    final int dValue = TWENTY_ONE - BlackjackHandModifier.getHandValue(dealersHand);
+    final int pValue = TWENTY_ONE - BlackjackHandEvaluator.getHandValue(playersHand);
+    final int dValue = TWENTY_ONE - BlackjackHandEvaluator.getHandValue(dealersHand);
 
     return pValue > dValue ? dealersHand.getPlayerName() : playersHand.getPlayerName();
   }
 
   private static boolean didWinNaturally(final Hand hand) {
     // if you have 21 to start you win 1.5 times your bet
-    if (BlackjackHandModifier.getHandValue(hand) == TWENTY_ONE) {
+    if (BlackjackHandEvaluator.getHandValue(hand) == TWENTY_ONE) {
       CasinoDriver.playersBank.addMoney(bet.multiply(BET_INCREASE));
       System.out.println("Blackjack to start! Wow!");
       isStillPlaying = false;
@@ -139,7 +139,7 @@ public class Blackjack {
   }
 
   private static boolean didLoseBlackjack(final Hand hand) {
-    if (BlackjackHandModifier.getHandValue(hand) > TWENTY_ONE) {
+    if (BlackjackHandEvaluator.getHandValue(hand) > TWENTY_ONE) {
       System.out.println("--bust--");
       CasinoDriver.playersBank.subtractMoney(bet);
       System.out.println("Subtracting $" + bet + " from bank");
@@ -150,8 +150,8 @@ public class Blackjack {
   }
 
   private static void endGame() {
-    final int pVal = BlackjackHandModifier.getHandValue(playersHand);
-    final int dVal = BlackjackHandModifier.getHandValue(dealersHand);
+    final int pVal = BlackjackHandEvaluator.getHandValue(playersHand);
+    final int dVal = BlackjackHandEvaluator.getHandValue(dealersHand);
     if (pVal != dVal) {
       if (getWinnerName().equals("Dealer")) {
         CasinoDriver.playersBank.subtractMoney(bet);
