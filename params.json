@@ -1,6 +1,6 @@
 {
   "name": "Card Casino",
   "tagline": "Card Casino is a desktop application for playing Blackjack and Poker.",
-  "body": "### How to play\r\nWhen a user enters the Card Casino, they will have the option to play Blackjack or Casino.\r\n\r\n### Class Diagrams\r\n\r\n### Screenshots\r\n",
+  "body": "# Card Casino\r\nCard Casino is a desktop application for playing Blackjack and Poker.\r\n\r\n### How to play\r\nWhen a user enters the Card Casino, they will have the option to play Blackjack or Casino.\r\n\r\n### Class Diagrams\r\n\r\n### Screenshots",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
