@@ -10,5 +10,3 @@ Users are able to choose which game they want to play, declare a betting amount,
 ##More Information##
 For more information, please visit the GitHub Pages link below. This page will contain a detailed explanation of the application and the architecture.
 https://cpe305.github.io/fall2016-project-jamiecorr/
-
-Please contact jccorr@calpoly.edu for any questions, comments, or general feedback.
