@@ -28,12 +28,10 @@ public class Deck {
   private static final int MAX_CARD_POSITION = 14;
   private static final int NONFACECARD_STARTING_VALUE = 2;
   private static final int FACECARD_VALUE = 10;
-  private String name;
 
-  public Deck(String inputName) {
+  public Deck() {
     newDeck = new ArrayList<>();
     createDeck();
-    name = inputName;
   }
 
   public int getSize() {

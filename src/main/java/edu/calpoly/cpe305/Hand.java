@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Hand {
   private String playerName;
-  private static ArrayList<Card> currentHand;
+  private ArrayList<Card> currentHand;
   static final double ACE_VALUE = 14;
 
   public Hand(String playerName) {

@@ -7,7 +7,7 @@ import edu.calpoly.cpe305.Deck;
 import org.junit.Test;
 
 public class TestDeckBJ {
-  Deck deck = new Deck("KT");
+  Deck deck = new Deck();
 
   @Test
   public void testSize() {

@@ -8,7 +8,7 @@ public class Poker {
     String input = CasinoDriver.scan.nextLine();
 
     while ("yes".equals(input)) {
-      Deck currentDeck = new Deck("Jim");
+      Deck currentDeck = new Deck();
       currentDeck.createDeck();
 
       PokerHandEvaluator user = new PokerHandEvaluator("Player");

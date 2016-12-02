@@ -12,7 +12,7 @@ public class CasinoDriver {
   static final int PLAY_POKER = 2;
   static Bank playersBank = new Bank(BALANCE);
   static String gameChoice;
-  static String input = "yes";
+  static String inputScan = "yes";
   static Scanner scan;
   private static final Logger LOGGER = Logger.getLogger(Logger.class.getName());
 
@@ -22,20 +22,20 @@ public class CasinoDriver {
   public static final void main(String[] args) {
     scan = new Scanner(System.in);
 
-    while ("yes".equals(input)) {
+    while ("yes".equals(inputScan)) {
       System.out.println("You have $" + playersBank.getCurrentBalance() 
           + "  Press 1:Blackjack or 2:Poker");
       gameChoice = scan.nextLine();
 
       if ("1".equals(gameChoice)) {
-        Blackjack.play();
+        new Blackjack();
       } else if ("2".equals(gameChoice)) {
         Poker.play(playersBank);
       }
 
       if (!playersBank.isBroke()) {
         System.out.println("Do you want to stay in the casino?");
-        input = scan.nextLine();
+        inputScan = scan.nextLine();
       } else {
         System.out.println("No money left, now exiting casino.");
         break;

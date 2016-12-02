@@ -14,14 +14,14 @@ public class Bank {
   }
 
   public void subtractMoney(BigDecimal amount) {
-    money = money.subtract(money);
+    money = money.subtract(amount);
   }
 
   public boolean isBroke() {
     if (money.compareTo(BigDecimal.ZERO) > 0) {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
   public BigDecimal getCurrentBalance() {

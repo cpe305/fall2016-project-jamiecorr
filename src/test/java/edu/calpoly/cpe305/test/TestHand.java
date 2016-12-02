@@ -5,18 +5,24 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import edu.calpoly.cpe305.Card;
+import edu.calpoly.cpe305.Deck;
 import edu.calpoly.cpe305.Hand;
 
 public class TestHand {
   Hand myHand = new Hand("Jamie");
+  Hand myHand2 = new Hand("Jamie2");
 
   @Test
   public void testGetPlayerName() {
     assertEquals("Jamie", myHand.getPlayerName());
+    assertEquals("Jamie2", myHand2.getPlayerName());
   }
   
   @Test
   public void testSize() {
+    Deck deck1 = new Deck();
+    myHand2.addCard(deck1.drawRandomCard());
+    myHand2.addCard(deck1.drawRandomCard());
     assertEquals(0, myHand.size());
   }
 
