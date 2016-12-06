@@ -26,4 +26,11 @@
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/java/edu/calpoly/cpe305/BlackjackScreen.fxml</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/BlackjackScreen.fxml</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

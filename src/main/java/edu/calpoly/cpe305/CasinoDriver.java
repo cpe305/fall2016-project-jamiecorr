@@ -2,7 +2,6 @@ package edu.calpoly.cpe305;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CasinoDriver {
@@ -30,7 +29,7 @@ public class CasinoDriver {
       if ("1".equals(gameChoice)) {
         new Blackjack();
       } else if ("2".equals(gameChoice)) {
-        Poker.play(playersBank);
+        new Poker();
       }
 
       if (!playersBank.isBroke()) {

@@ -3,7 +3,11 @@ package edu.calpoly.cpe305;
 import java.math.BigDecimal;
 
 public class Poker {
-  public static void play(Bank bank) {
+  public Poker() {
+    play();
+  }
+  
+  public void play() {
     System.out.println("New Hand?");
     String input = CasinoDriver.scan.nextLine();
 
@@ -11,63 +15,63 @@ public class Poker {
       Deck currentDeck = new Deck();
       currentDeck.createDeck();
 
-      PokerHandEvaluator user = new PokerHandEvaluator("Player");
+      Hand playersHand = new Hand("Player");
 
-      Card userCard1 = currentDeck.drawRandomCard();
-      Card userCard2 = currentDeck.drawRandomCard();
-      Card userCard3 = currentDeck.drawRandomCard();
-      Card userCard4 = currentDeck.drawRandomCard();
-      Card userCard5 = currentDeck.drawRandomCard();
-      user.addCard(userCard1);
-      user.addCard(userCard2);
-      user.addCard(userCard3);
-      user.addCard(userCard4);
-      user.addCard(userCard5);
+      Card playersHandCard1 = currentDeck.drawRandomCard();
+      Card playersHandCard2 = currentDeck.drawRandomCard();
+      Card playersHandCard3 = currentDeck.drawRandomCard();
+      Card playersHandCard4 = currentDeck.drawRandomCard();
+      Card playersHandCard5 = currentDeck.drawRandomCard();
+      playersHand.addCard(playersHandCard1);
+      playersHand.addCard(playersHandCard2);
+      playersHand.addCard(playersHandCard3);
+      playersHand.addCard(playersHandCard4);
+      playersHand.addCard(playersHandCard5);
 
       System.out.println("How much do you want to bet this round?");
       BigDecimal bet = CasinoDriver.scan.nextBigDecimal();
 
       // order if increasing value
-      user.organize();
+      playersHand.organize();
 
-      System.out.println("Player cards:  " + user);
+      System.out.println("Player cards:  " + playersHand.printHand());
       System.out.println("Do you want to stay with these cards?");
       String answer = CasinoDriver.scan.nextLine();
 
       if ("no".equals(answer)) {
         System.out.println("Enter which cards you want to change (ex. 1,4,5)");
         String cards = CasinoDriver.scan.nextLine();
-        user.reDeal(cards, currentDeck);
+        playersHand.reDeal(cards, currentDeck);
       }
       
-      user.organize();
-      System.out.println(user);
+      playersHand.organize();
+      System.out.println(playersHand.printHand());
 
-      if (user.hasPair()) {
+      if (PokerHandEvaluator.hasPair(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet);
         System.out.println("Won with a pair");
-      } else if (user.hasTwoPairs()) {
+      } else if (PokerHandEvaluator.hasTwoPairs(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(2)));
         System.out.println("Won with 2 pairs");
-      } else if (user.hasTriple()) {
+      } else if (PokerHandEvaluator.hasTriple(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(3)));
         System.out.println("Won with 3 of a kind");
-      } else if (user.hasStraight()) {
+      } else if (PokerHandEvaluator.hasStraight(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(4)));
         System.out.println("Won with a straight");
-      } else if (user.hasFlush()) {
+      } else if (PokerHandEvaluator.hasFlush(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(6)));
         System.out.println("Won with a flush");
-      } else if (user.hasFullHouse()) {
+      } else if (PokerHandEvaluator.hasFullHouse(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(9)));
         System.out.println("Won with a full house");
-      } else if (user.hasQuad()) {
+      } else if (PokerHandEvaluator.hasQuad(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(25)));
         System.out.println("Won with four of a kind");
-      } else if (user.hasStraightFlush()) {
+      } else if (PokerHandEvaluator.hasStraightFlush(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(50)));
         System.out.println("Won with a straight flush");
-      } else if (user.hasRoyalFlush()) {
+      } else if (PokerHandEvaluator.hasRoyalFlush(playersHand)) {
         CasinoDriver.playersBank.addMoney(bet.multiply(BigDecimal.valueOf(250)));
         System.out.println("Daangg....royal flush");
       } else {
@@ -75,7 +79,7 @@ public class Poker {
         System.out.println("You lost");
       }
 
-      System.out.println(CasinoDriver.playersBank);
+      System.out.println(CasinoDriver.playersBank.printCurrentBalance());
 
       // need money to play
       if (CasinoDriver.playersBank.isBroke()) {

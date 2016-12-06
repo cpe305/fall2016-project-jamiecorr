@@ -1,24 +1,20 @@
 package edu.calpoly.cpe305;
 
-import java.util.ArrayList;
-
 public class PokerHandEvaluator extends Hand {
-  private ArrayList<Card> currentHand;
-
   public PokerHandEvaluator(String inputName) {
     super(inputName);
   }
 
   // at least one pair
-  public boolean hasPair() {
+  public static boolean hasPair(Hand currentHand) {
     boolean isPair = false;
 
     // count same cards
     int count = 0;
     for (int i = 0; i < 4; i++) {
-      Card compare = currentHand.get(i);
+      Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.get(j))) {
+        if (compare.equals(currentHand.getCard(j))) {
           isPair = true;
           count = 1;
           break;
@@ -31,7 +27,7 @@ public class PokerHandEvaluator extends Hand {
     return isPair;
   }
 
-  public boolean hasTwoPairs() {
+  public static boolean hasTwoPairs(Hand currentHand) {
     boolean twoPairs = false;
 
     // count same cards
@@ -40,9 +36,9 @@ public class PokerHandEvaluator extends Hand {
     for (int i = 0; i < 4; i++) {
       count = 0;
 
-      Card compare = currentHand.get(i);
+      Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.get(j))) {
+        if (compare.equals(currentHand.getCard(j))) {
           // one pair
           if (count == 1) {
             number = number + 1;
@@ -66,13 +62,13 @@ public class PokerHandEvaluator extends Hand {
   }
 
   // face card pair
-  public boolean hasFacePair() {
+  public static boolean hasFacePair(Hand currentHand) {
     boolean isPair = false;
     int count = 0;
     for (int i = 0; i < 4; i++) {
-      Card compare = currentHand.get(i);
+      Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equalsPair(currentHand.get(j))) {
+        if (compare.equalsPair(currentHand.getCard(j))) {
           isPair = true;
           count = 1;
           break;
@@ -87,7 +83,7 @@ public class PokerHandEvaluator extends Hand {
   }
 
   // 3 of a kind
-  public boolean hasTriple() {
+  public static boolean hasTriple(Hand currentHand) {
     boolean isTriple = false;
     int count;
 
@@ -96,9 +92,9 @@ public class PokerHandEvaluator extends Hand {
 
     for (int i = 0; i < 4; i++) {
       count = 0;
-      Card compare = currentHand.get(i);
+      Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.get(j))) { // this is in the card class 
+        if (compare.equals(currentHand.getCard(j))) { // this is in the card class 
           count = count + 1;
           if (count == 2) {
             isTriple = true;
@@ -120,14 +116,14 @@ public class PokerHandEvaluator extends Hand {
     return isTriple;
   }
 
-  public boolean hasStraight() { // determines if you have a strait
+  public static boolean hasStraight(Hand currentHand) { // determines if you have a strait
     boolean hasStrait = false;
-    organize();
-    int position = currentHand.get(0).getPosition();
+    currentHand.organize();
+    int position = currentHand.getCard(0).getPosition();
     int count = 0;
     for (int i = 1; i < 5; i++) {
       // if one more than card before it
-      if (currentHand.get(i).getPosition() == position + i) {
+      if (currentHand.getCard(i).getPosition() == position + i) {
         count++;
       }
     }
@@ -140,11 +136,11 @@ public class PokerHandEvaluator extends Hand {
   }
 
   // 4 of same suit
-  public boolean hasFlush() {
-    Card compare = currentHand.get(0);
+  public static boolean hasFlush(Hand currentHand) {
+    Card compare = currentHand.getCard(0);
     int count = 0;
     for (int i = 1; i < 5; i++) {
-      if (currentHand.get(i).getSuit().equals(compare.getSuit())) {
+      if (currentHand.getCard(i).getSuit().equals(compare.getSuit())) {
         count++;
       }
     }
@@ -152,12 +148,12 @@ public class PokerHandEvaluator extends Hand {
   }
 
   // 2 pairs with one triple
-  public boolean hasFullHouse() {
-    return (hasTriple() && hasTwoPairs());
+  public static boolean hasFullHouse(Hand currentHand) {
+    return (hasTriple(currentHand) && hasTwoPairs(currentHand));
   }
 
   // 4 of a kind
-  public boolean hasQuad() {
+  public static boolean hasQuad(Hand currentHand) {
     boolean isQuad = false;
     int count = 0;
 
@@ -165,9 +161,9 @@ public class PokerHandEvaluator extends Hand {
     int finished = 10;
 
     for (int i = 0; i < 4; i++) {
-      Card compare = currentHand.get(i);
+      Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.get(j))) {
+        if (compare.equals(currentHand.getCard(j))) {
           count = count + 1;
           if (count == 4) {
             finished = 100;
@@ -189,16 +185,16 @@ public class PokerHandEvaluator extends Hand {
   }
 
   // same suit flush
-  public boolean hasStraightFlush() {
-    return hasStraight() && hasFlush();
+  public static boolean hasStraightFlush(Hand currentHand) {
+    return hasStraight(currentHand) && hasFlush(currentHand);
   }
 
   // straight flush face cards
-  public boolean hasRoyalFlush() {
+  public static boolean hasRoyalFlush(Hand currentHand) {
     boolean royal = false;
 
     // increasing order
-    organize();
+    currentHand.organize();
 
     // first card 10
     int position = 10;
@@ -206,7 +202,7 @@ public class PokerHandEvaluator extends Hand {
     int count = 0;
     // check straight
     for (int i = 0; i < 5; i++) {
-      if (currentHand.get(i).getPosition() == position + i) {
+      if (currentHand.getCard(i).getPosition() == position + i) {
         count = count + 1;
       }
     }
@@ -215,6 +211,6 @@ public class PokerHandEvaluator extends Hand {
       royal = true;
     }
 
-    return hasFlush() && royal;
+    return hasFlush(currentHand) && royal;
   }
 }

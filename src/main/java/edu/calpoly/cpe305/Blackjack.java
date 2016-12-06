@@ -6,6 +6,7 @@ public class Blackjack {
   Hand playersHand;
   Hand dealersHand;
   boolean isStillPlaying = true;
+  boolean isPlaying = true;
   BigDecimal bet;
   static final BigDecimal BET_INCREASE = BigDecimal.valueOf(1.5);
   static final int TWENTY_ONE = 21;
@@ -30,7 +31,7 @@ public class Blackjack {
   }
 
   public void play(Hand playersHand, Hand dealersHand, BigDecimal bet, Deck currentDeck) {
-    while (true) {
+    while (isPlaying) {
       // reset deck if necessary
       if (currentDeck.getSize() <= DECK_MINIMUM) {
         currentDeck = new Deck();
@@ -46,7 +47,7 @@ public class Blackjack {
       System.out.println("Players cards:  " + playersHand.getCard(0) + " and " + playersHand.getCard(1));
       System.out.println("Dealers cards:  " + dealersHand.getCard(1) + " and another card");
 
-      if (didBust(playersHand, bet)) {
+      if (didBust(playersHand)) {
         System.out.println("You lost with hand value: " + BlackjackHandEvaluator.getHandValue(playersHand));
         System.out.println("Dealers hand value: " + BlackjackHandEvaluator.getHandValue(dealersHand));
 
@@ -54,14 +55,11 @@ public class Blackjack {
       }
 
       if (didWinNaturally(playersHand, bet)) {
-        restart(currentDeck);
+        isPlaying = restart(currentDeck);
       }
 
-      // while ((decision == null) || decision.equals("x")) {
-      // System.out.println(usersTurnPrompt);
-      // decision = CasinoDriver.scan.next();
-      // }
-
+      isStillPlaying = true;
+      int count = 0;
       while (isStillPlaying) {
         if ("n".equals(decision)) {
           playersHand = dealNextCard(playersHand, currentDeck);
@@ -82,7 +80,7 @@ public class Blackjack {
 
           System.out.println("Dealer's hand:  " + dealersHand.printHand());
 
-          if (didBust(dealersHand, bet)) {
+          if (didBust(dealersHand)) {
             System.out.println("Dealer busted");
             // CasinoDriver.playersBank.addMoney(bet);
             // System.out.println("$" + bet + "won");
@@ -99,7 +97,6 @@ public class Blackjack {
           endGame(playersHand, dealersHand, bet);
           break;
         } else {
-          // System.out.println(CasinoDriver.playersBank.printCurrentBalance());
           System.out.println(usersTurnPrompt);
           decision = CasinoDriver.scan.nextLine();
         }
@@ -107,18 +104,24 @@ public class Blackjack {
 
       if (CasinoDriver.playersBank.isBroke()) {
         System.out.println("No more money");
+        isPlaying = false;
+        break;
+      } else {
+        isPlaying = restart(currentDeck);
         break;
       }
-
-      restart(currentDeck);
     }
   }
 
-  private void restart(Deck myDeck) {
+  private boolean restart(Deck myDeck) {
     System.out.println("New hand?");
     input = CasinoDriver.scan.nextLine();
     if ("yes".equals(input)) {
       newHand(myDeck);
+      isStillPlaying = true;
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -140,9 +143,9 @@ public class Blackjack {
     int valueP = TWENTY_ONE - BlackjackHandEvaluator.getHandValue(playersHand);
     int valueD = TWENTY_ONE - BlackjackHandEvaluator.getHandValue(dealersHand);
 
-    if (didBust(playersHand, bet)) {
+    if (didBust(playersHand)) {
       return dealersHand.getPlayerName();
-    } else if (didBust(dealersHand, bet)) {
+    } else if (didBust(dealersHand)) {
       return playersHand.getPlayerName();
     } else {
       return valueP < valueD ? playersHand.getPlayerName() : dealersHand.getPlayerName();
@@ -161,7 +164,7 @@ public class Blackjack {
     return false;
   }
 
-  private boolean didBust(final Hand hand, BigDecimal bet) {
+  private boolean didBust(final Hand hand) {
     if (BlackjackHandEvaluator.getHandValue(hand) > TWENTY_ONE) {
       isStillPlaying = false;
       return true;
@@ -186,7 +189,7 @@ public class Blackjack {
       }
     } else {
       System.out.println("Tie");
-      restart(thisDeck);
+      isPlaying = restart(thisDeck);
     }
   }
 }
