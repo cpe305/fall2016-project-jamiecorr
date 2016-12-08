@@ -1,13 +1,20 @@
 package edu.calpoly.cpe305;
 
+import java.util.List;
+import java.util.function.Predicate;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class BlackjackHandEvaluator extends Hand {
   private static final int TWENTY_ONE = 21;
   private static final int ACE_RESET = 10;
+//  private final IntegerProperty valueOfHand = new SimpleIntegerProperty();
 
   public BlackjackHandEvaluator(String inputName) {
     super(inputName);
   }
-  
+
   public static int getHandValue(Hand hand) {
     int total = getTotalValue(hand);
 
@@ -47,4 +54,12 @@ public class BlackjackHandEvaluator extends Hand {
     // if over 21 sends to getValue to look at aces
     return getTotalValue(hand) > TWENTY_ONE;
   }
+
+//  public void setValueOfHand(int valueOfHand) {
+//    this.valueOfHand.set(valueOfHand);
+//  }
+//
+//  public int getValueOfHand() {
+//    return valueOfHand.get();
+//  }
 }

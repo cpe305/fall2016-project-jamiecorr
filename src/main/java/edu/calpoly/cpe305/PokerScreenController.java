@@ -27,7 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import jdk.nashorn.internal.ir.Statement;
 
-public class BlackjackScreenController implements Initializable {
+public class PokerScreenController implements Initializable {
 
   private Deck deck = new Deck();
   private Hand playersHand = new Hand("Player");
