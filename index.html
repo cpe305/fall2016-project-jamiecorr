@@ -1,28 +1,53 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
     <title>Card Casino by cpe305</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
+
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Card Casino</h1>
-      <h2 class="project-tagline">Blackjack and Video Poker game with JavaFX GUI</h2>
-      <a href="https://github.com/cpe305/fall2016-project-jamiecorr" class="btn">View on GitHub</a>
-      <a href="https://github.com/cpe305/fall2016-project-jamiecorr/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/cpe305/fall2016-project-jamiecorr/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <a id="forkme_banner" href="https://github.com/cpe305/fall2016-project-jamiecorr">View on GitHub</a>
+    <div class="shell">
 
-    <section class="main-content">
-      <h1>
-<a id="card-casino" class="anchor" href="#card-casino" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Card Casino</h1>
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Card Casino</h1>
+            <h2>Blackjack and Video Poker game with JavaFX GUI</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
 
-<p>Card Casino is a desktop application for playing Blackjack and Poker.  Users are able to choose which game they want to play, declare a betting amount, and play the chosen game.  After each game is finished, the amount won or lost will be added or subtracted from the user's bank. Their bank will stay with them throughout their time in the casino. Users will have the option of playing the same game again, playing the other game, or leaving the casino.  The end goal of Card Casino is to provide entertainment to the user and either teach them how to play or help improve their playing skills.</p>
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/cpe305/fall2016-project-jamiecorr/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/cpe305/fall2016-project-jamiecorr/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <p><img src="https://github.com/cpe305/fall2016-project-jamiecorr/blob/master/menu1-1.png" alt=""># Card Casino
+Card Casino is a desktop application for playing Blackjack and Poker.  Users are able to choose which game they want to play, declare a betting amount, and play the chosen game.  After each game is finished, the amount won or lost will be added or subtracted from the user's bank. Their bank will stay with them throughout their time in the casino. Users will have the option of playing the same game again, playing the other game, or leaving the casino.  The end goal of Card Casino is to provide entertainment to the user and either teach them how to play or help improve their playing skills.</p>
 
 <h3>
 <a id="key-features" class="anchor" href="#key-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Features</h3>
@@ -59,15 +84,22 @@ The Factory Pattern creates objects without exposing creation logic and refers t
 <li>Test early and frequently</li>
 <li>Document code as it is written</li>
 </ul>
+      </section>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/cpe305/fall2016-project-jamiecorr">Card Casino</a> is maintained by <a href="https://github.com/cpe305">cpe305</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/cpe305">cpe305</a> can be found on <a href="https://github.com/cpe305/fall2016-project-jamiecorr">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
       </footer>
 
-    </section>
+    </div>
 
-  
+    
   </body>
 </html>
