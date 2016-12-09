@@ -41,6 +41,7 @@
 
 <ul>
 <li>Starting Menu</li>
+<li>Single Player</li>
 <li>Blackjack</li>
 <li>Video Poker</li>
 <li>Universal Bank</li>
@@ -62,19 +63,19 @@
 
 <p>The Singleton pattern was implemented in making the universal bank feature of the casino. The pattern ensures that there can only be one instance of this class and it is a shared resource among several classes.</p>
 
-<p>Looking back, using the Observer pattern to update the GUI by connecting to the console would have been more efficient.</p>
+<p>Looking back, I also should have used the Observer pattern to update the GUI by connecting it to the console.</p>
 
 <h3>
 <a id="walk-through" class="anchor" href="#walk-through" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Walk Through</h3>
 
 <p><img src="images/menu.png" alt=""><br>
-First screen the user sees is the main menu of the casino.  </p>
+First screen the player sees is the main menu of the casino.  </p>
 
 <p><img src="images/menu1-1.png" alt="">
 When the "Play Blackjack" button is clicked, the Blackjack screen loads a new game.  Start by placing a bet and then click the "Deal" button.</p>
 
 <p><img src="images/menu1-2.png" alt="">
-Two cards are dealt to each player.  The player can only see one of the dealer's cards at this point adnd the player's hand value is displayed to the left.</p>
+Two cards are dealt to each player.  The player can only see one of the dealer's cards at this point and the player's hand value is displayed to the left of their cards.</p>
 
 <p><img src="images/menu1-3.png" alt="">
 The player chooses "Hit", "Stand", or "Double" and plays accordingly and the players hand value is compared to the dealer's.  To win, the player must have a hand value less than or equal to 21 and have a greater value than the dealer.</p>
@@ -89,7 +90,7 @@ The table column corresponding to the chosen bet level will be highlighted in th
 To remove unwanted cards from the hand, click the "Discard" button under that card.  After clicking the "Finish" button, the discarded cards will be replaced with new cards and the hand will be evaluated.</p>
 
 <p><img src="images/menu2-4.png" alt="">
-If the player wins, the table row corresponding to your winning value will be highlighted in the pay table.  The amount in the intersection of the two highlighted purple rectangles will be added to the bank. </p>
+If the player wins, the table row corresponding to your winning value will be highlighted in the pay table.  The amount displayed in the intersection of the two highlighted purple rectangles will be added to the bank. </p>
 
 <h3>
 <a id="key-learning" class="anchor" href="#key-learning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Key Learning</h3>
