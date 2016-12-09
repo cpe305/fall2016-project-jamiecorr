@@ -32,6 +32,7 @@ public class BlackjackScreenController implements Initializable {
   private Deck deck = new Deck();
   private Hand playersHand = new Hand("Player");
   private Hand dealersHand = new Hand("Dealer");
+  Bank myBank = Bank.getInstance();
 
   @FXML
   private TextField betTextField;
@@ -71,10 +72,10 @@ public class BlackjackScreenController implements Initializable {
           int newBet = Integer.parseInt(betTextField.getText().trim());
           if (newBet < 0) {
             throw new NumberFormatException();
-          } else if (newBet > playersHand.getSumOfChips()) {
+          } else if (newBet > myBank.getSumOfChips()) {
             throw new IllegalArgumentException();
           } else {
-            playersHand.setRoundBet(newBet);
+            myBank.setRoundBet(newBet);
             betTextField.setDisable(true);
             betButton.setDisable(true);
             dealButton.setDisable(false);
@@ -85,7 +86,7 @@ public class BlackjackScreenController implements Initializable {
           welcomeLabel.setText("Enter a positive integer ");
         } catch (IllegalArgumentException exc) {
           betTextField.setStyle("-fx-border-color: red;");
-          welcomeLabel.setText("Enter a positive integer <= " + playersHand.getSumOfChips());
+          welcomeLabel.setText("Enter a positive integer <= " + myBank.getSumOfChips());
         }
       }
     });
@@ -134,9 +135,9 @@ public class BlackjackScreenController implements Initializable {
     hitButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        playersHand.setRoundBet(playersHand.getRoundBet());
+        myBank.setRoundBet(myBank.getRoundBet());
         makeHitMove();
-        bankLabel2.setText("  $" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + myBank.getSumOfChips());
       }
     });
 
@@ -155,16 +156,16 @@ public class BlackjackScreenController implements Initializable {
         evaluateRoundAndPrintResult();
         standButton.setDisable(true);
         checkIfBroke();
-        bankLabel2.setText("  $" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + myBank.getSumOfChips());
       }
     });
 
     doubleButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        playersHand.setRoundBet(playersHand.getRoundBet() * 2);
+        myBank.setRoundBet(myBank.getRoundBet() * 2);
         makeHitMove();
-        bankLabel2.setText("  $" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + myBank.getSumOfChips());
       }
     });
 
@@ -190,7 +191,7 @@ public class BlackjackScreenController implements Initializable {
     }
 
     if (BlackjackHandEvaluator.getHandValue(playersHand) > 21) {
-      playersHand.subChips(playersHand.getRoundBet());
+      myBank.subChips(myBank.getRoundBet());
       welcomeLabel.setText("Busted, house wins!");
       playerChipLabel.setText("" + BlackjackHandEvaluator.getHandValue(playersHand));
       newRoundButton.setDisable(false);
@@ -216,7 +217,7 @@ public class BlackjackScreenController implements Initializable {
   }
 
   private void checkIfBroke() {
-    if (playersHand.getSumOfChips() <= 0) {
+    if (myBank.getSumOfChips() <= 0) {
       newRoundButton.setDisable(true);
       welcomeLabel.setText("Game over, no more money!");
     }
@@ -234,10 +235,10 @@ public class BlackjackScreenController implements Initializable {
       welcomeLabel.setText("The hand is a push!");
     } else if ((valueOfPlayerHand > valueOfDealerHand) || (valueOfDealerHand > 21)) {
       welcomeLabel.setText("Player wins!");
-      playersHand.addChips(playersHand.getRoundBet());
+      myBank.addChips(myBank.getRoundBet());
     } else if (valueOfPlayerHand < valueOfDealerHand) {
       welcomeLabel.setText("Dealer wins!");
-      playersHand.subChips(playersHand.getRoundBet());
+      myBank.subChips(myBank.getRoundBet());
     }
     
     dealerChip.setVisible(true);
@@ -252,7 +253,7 @@ public class BlackjackScreenController implements Initializable {
   private void resetTable() {
     playersHand.clearHand();
     dealersHand.clearHand();
-    playersHand.setRoundBet(0);
+    myBank.setRoundBet(0);
     betTextField.setText("");
 
     ImageView[] playerCards = { playerCard1, playerCard2, playerCard3, playerCard4, playerCard5, playerCard6 };
@@ -276,8 +277,8 @@ public class BlackjackScreenController implements Initializable {
     
     betTextField.setStyle("-fx-border-color: black;");
     newRoundButton.setDisable(true);
-    bankLabel2.setText("  $" + playersHand.getSumOfChips());
-    playersHand.setRoundBet(0);
+    bankLabel2.setText("  $" + myBank.getSumOfChips());
+    myBank.setRoundBet(0);
     betTextField.setFocusTraversable(true);
     betTextField.requestFocus();
     

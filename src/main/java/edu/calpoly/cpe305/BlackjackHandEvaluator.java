@@ -54,12 +54,4 @@ public class BlackjackHandEvaluator extends Hand {
     // if over 21 sends to getValue to look at aces
     return getTotalValue(hand) > TWENTY_ONE;
   }
-
-//  public void setValueOfHand(int valueOfHand) {
-//    this.valueOfHand.set(valueOfHand);
-//  }
-//
-//  public int getValueOfHand() {
-//    return valueOfHand.get();
-//  }
 }

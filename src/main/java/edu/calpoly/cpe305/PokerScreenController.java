@@ -34,6 +34,7 @@ public class PokerScreenController implements Initializable {
 
   private Deck deck = new Deck();
   private Hand playersHand = new Hand("Player");
+  Bank myBank = Bank.getInstance();
   int betChoice = 0;
   boolean isPug1, isPug2, isPug3, isPug4, isPug5;
   Card cardA, cardB, cardC, cardD, cardE;
@@ -75,7 +76,7 @@ public class PokerScreenController implements Initializable {
         dealButton.setDisable(false);
 
         betChoice = 1;
-        playersHand.setRoundBet(betChoice);
+        myBank.setRoundBet(betChoice);
 
         vertRect1.setVisible(true);
         vertRect2.setVisible(false);
@@ -94,7 +95,7 @@ public class PokerScreenController implements Initializable {
         dealButton.setDisable(false);
 
         betChoice = 2;
-        playersHand.setRoundBet(betChoice);
+        myBank.setRoundBet(betChoice);
 
         vertRect2.setVisible(true);
         vertRect1.setVisible(false);
@@ -113,7 +114,7 @@ public class PokerScreenController implements Initializable {
         dealButton.setDisable(false);
 
         betChoice = 3;
-        playersHand.setRoundBet(betChoice);
+        myBank.setRoundBet(betChoice);
 
         vertRect3.setVisible(true);
         vertRect1.setVisible(false);
@@ -132,7 +133,7 @@ public class PokerScreenController implements Initializable {
         dealButton.setDisable(false);
 
         betChoice = 4;
-        playersHand.setRoundBet(betChoice);
+        myBank.setRoundBet(betChoice);
 
         vertRect4.setVisible(true);
         vertRect1.setVisible(false);
@@ -151,7 +152,7 @@ public class PokerScreenController implements Initializable {
         dealButton.setDisable(false);
 
         betChoice = 5;
-        playersHand.setRoundBet(betChoice);
+        myBank.setRoundBet(betChoice);
 
         vertRect5.setVisible(true);
         vertRect1.setVisible(false);
@@ -270,7 +271,7 @@ public class PokerScreenController implements Initializable {
         
         reDeal();
         evaluateRoundandPrintResult();
-        bankLabel2.setText("  $" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + myBank.getSumOfChips());
         checkIfBroke();
       }
     });
@@ -304,34 +305,34 @@ public class PokerScreenController implements Initializable {
     welcomeLabel.setText("You won!");
 
     if (PokerHandEvaluator.hasRoyalFlush(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 250);
+      myBank.addChips(myBank.getRoundBet() * 250);
       royalRect.setVisible(true);
     } else if (PokerHandEvaluator.hasStraightFlush(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 50);
+      myBank.addChips(myBank.getRoundBet() * 50);
       straightRect.setVisible(true);
     } else if (PokerHandEvaluator.hasQuad(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 25);
+      myBank.addChips(myBank.getRoundBet() * 25);
       fourRect.setVisible(true);
     } else if (PokerHandEvaluator.hasFullHouse(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 9);
+      myBank.addChips(myBank.getRoundBet() * 9);
       fullRect.setVisible(true);
     } else if (PokerHandEvaluator.hasFlush(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 6);
+      myBank.addChips(myBank.getRoundBet() * 6);
       flushRect.setVisible(true);
     } else if (PokerHandEvaluator.hasStraight(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 4);
+      myBank.addChips(myBank.getRoundBet() * 4);
       straightRect1.setVisible(true);
     } else if (PokerHandEvaluator.hasTriple(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 3);
+      myBank.addChips(myBank.getRoundBet() * 3);
       threeRect.setVisible(true);
     } else if (PokerHandEvaluator.hasTwoPairs(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet() * 2);
+      myBank.addChips(myBank.getRoundBet() * 2);
       twoRect.setVisible(true);
     } else if (PokerHandEvaluator.hasFacePair(playersHand)) {
-      playersHand.addChips(playersHand.getRoundBet());
+      myBank.addChips(myBank.getRoundBet());
       jacksRect.setVisible(true);
     } else {
-      playersHand.subChips(playersHand.getRoundBet());
+      myBank.subChips(myBank.getRoundBet());
       welcomeLabel.setText("You lost");
     }
   }
@@ -399,7 +400,7 @@ public class PokerScreenController implements Initializable {
   }
 
   private void checkIfBroke() {
-    if (playersHand.getSumOfChips() <= 0) {
+    if (myBank.getSumOfChips() <= 0) {
       newRoundButton.setDisable(true);
       welcomeLabel.setText("Game over, no more money!");
     }
@@ -411,8 +412,8 @@ public class PokerScreenController implements Initializable {
     welcomeLabel.setText("Select a bet level to start");
     enableBetButtons();
     newRoundButton.setDisable(true);
-    bankLabel2.setText("  $" + playersHand.getSumOfChips());
-    playersHand.setRoundBet(0);
+    bankLabel2.setText("  $" + myBank.getSumOfChips());
+    myBank.setRoundBet(0);
     finishButton.setDisable(true);
     dealButton.setDisable(true);
     newRoundButton.setDisable(true);

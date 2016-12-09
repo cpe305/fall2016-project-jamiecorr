@@ -10,9 +10,6 @@ public class Hand {
   private ArrayList<Card> currentHand;
   static final double ACE_VALUE = 14;
 
-  private final IntegerProperty sumOfChips = new SimpleIntegerProperty(1000);
-  private final IntegerProperty roundBet = new SimpleIntegerProperty();
-  
   public Hand(String playerName) {
     currentHand = new ArrayList<>();
     this.playerName = playerName;
@@ -132,48 +129,5 @@ public class Hand {
     currentHand = setHand;
   }
   
-  /**
-   * Returns the value of the roundBet.
-   *
-   * @return the value of the roundBet
-   */
-  public int getRoundBet() {
-      return roundBet.get();
-  }
-
-  /**
-   * Sets the value of roundBet.
-   *
-   * @param roundBet is the value that will be set.
-   */
-  public void setRoundBet(int roundBet) {
-      this.roundBet.set(roundBet);
-  }
-
-  /**
-   * Sets the value of sumOfChips.
-   *
-   * @param sumOfChips is the value that will be set.
-   */
-  public void addChips(int sumOfChips) {
-      this.sumOfChips.set(this.sumOfChips.get() + sumOfChips);
-  }
-
-  /**
-   * Sets the value of sumOfChips.
-   *
-   * @param sumOfChips is the value that will be set.
-   */
-  public void subChips(int sumOfChips) {
-      this.sumOfChips.set(this.sumOfChips.get() - sumOfChips);
-  }
   
-  /**
-   * Returns the value of sumOfChips.
-   *
-   * @return the value of sumOfChips
-   */
-  public int getSumOfChips() {
-      return sumOfChips.get();
-  }
 }
