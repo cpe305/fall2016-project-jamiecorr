@@ -31,8 +31,8 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a id="card-casino" class="anchor" href="#card-casino" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Card Casino</h1>
+        <h3>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h3>
 
 <p>Card Casino is a desktop application for playing Blackjack and Poker.  Users are able to choose which game they want to play, declare a betting amount, and play the chosen game.  After each game is finished, the amount won or lost will be added or subtracted from the user's bank. Their bank will stay with them throughout their time in the casino. Users will have the option of playing the same game again, playing the other game, or leaving the casino.  The end goal of Card Casino is to provide entertainment to the user and either teach them how to play or help improve their playing skills.  </p>
 
@@ -51,7 +51,11 @@
 <h3>
 <a id="mvc-architechure-pattern" class="anchor" href="#mvc-architechure-pattern" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MVC Architechure Pattern</h3>
 
-<p><img src="images/mvc_components.png" alt="">  </p>
+<p><img src="images/mvc_components.png" alt=""><br>
+1. View tells Controller that player clicked button
+2. Controller tells Model to read value &amp; View to disable button
+3. Model tells View that bet value has changed
+4. View receives updated bet value from model</p>
 
 <h3>
 <a id="class-diagram" class="anchor" href="#class-diagram" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Class Diagram</h3>
@@ -63,7 +67,7 @@
 
 <p>The Singleton pattern was implemented in making the universal bank feature of the casino. The pattern ensures that there can only be one instance of this class and it is a shared resource among several classes.</p>
 
-<p>Looking back, I also should have used the Observer pattern to update the GUI by connecting it to the console.</p>
+<p>Looking back, I also should have used the Observer pattern to update the GUI by connecting it to the console's model, sending notifications of state changes to observers.</p>
 
 <h3>
 <a id="walk-through" class="anchor" href="#walk-through" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Walk Through</h3>
