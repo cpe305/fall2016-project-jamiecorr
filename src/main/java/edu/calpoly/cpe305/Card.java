@@ -33,17 +33,4 @@ public class Card {
   public String toString() {
     return name + " of " + suit;
   }
-
-  // same cards if same position
-  public boolean equalsCard(Object test) {
-    if (test != null) {
-      return (position == ((Card) test).getPosition());
-    }
-    return false;
-  }
-
-  // same face cards
-  public boolean equalsPair(Card test) {
-    return !"".equals(name) && test.getName().equals(name);
-  }
 }

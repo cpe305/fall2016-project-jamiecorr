@@ -2,122 +2,132 @@
       -fx-background-color: #191d22;
 }
 #bankLabel1 {
-      -fx-text-fill: #e6c75d;
-    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16.0px;
+    -fx-font-family: "Trajan Pro 3";   
 }
 #bankLabel2 {
-      -fx-text-fill: #e2c045;
-    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16.0px;
+    -fx-font-family: "Trajan Pro 3";
 }
-#dealerChipLabel {
-      -fx-text-fill: #e2c045;
-      -fx-font-size: 16;
-      -fx-font-family: "Segoe UI Light";
-      
-}
-#playerChipLabel {
-      -fx-text-fill: #8f7b3f;
-      -fx-font-size: 16;
-      -fx-font-family: "Segoe UI Light";
-      
-}
-#betButton {
-  -fx-background-color: transparent;
-  -fx-text-fill: #003bd1;
-        -fx-font-size: 14;
-              -fx-font-family: "Segoe UI Light";
-}
-
 #welcomeLabel {
-        -fx-font-size: 24;
-        -fx-text-fill: #003d00;
-        -fx-font-family: "Arial";
-}
-
-#hitButton {
-   -fx-background-color: 
-        #ecebe9,
-        rgba(0,0,0,0.05),
-        linear-gradient(#dcca8a, #c7a740),
-        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
-        linear-gradient(#f6ebbe, #e6c34d);  
-        -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
-    -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-padding: 5 10 5 10;
+    -fx-font-size: 24.0px;
+    -fx-text-fill: #e6c75d;
+    -fx-font-family: "Trajan Pro 3";
 }
 
 #backButton {
     -fx-background-color: 
         #c3c4c4,
-        linear-gradient(#d6d6d6 50%, white 100%),
-        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
-      -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
     -fx-text-fill: #191d22;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-padding: 5 10 5 10;
-}
-
-#standButton {
--fx-background-color: 
-        #ecebe9,
-        rgba(0,0,0,0.05),
-        linear-gradient(#dcca8a, #c7a740),
-        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
-        linear-gradient(#f6ebbe, #e6c34d);  
-        -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
-    -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-padding: 5 10 5 10;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
 }
 
 #dealButton {
-  -fx-background-color: 
-        #ecebe9,
-        rgba(0,0,0,0.05),
-        linear-gradient(#dcca8a, #c7a740),
-        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
-        linear-gradient(#f6ebbe, #e6c34d);  
-        -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-padding: 5 10 5 10;
-}
-
-#doubleButton {
-  -fx-background-color: 
-        #ecebe9,
-        rgba(0,0,0,0.05),
-        linear-gradient(#dcca8a, #c7a740),
-        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
-        linear-gradient(#f6ebbe, #e6c34d);  
-        -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
-    -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-padding: 5 10 5 10;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
 }
 
 #newRoundButton {
   -fx-background-color: 
-        #ecebe9,
-        rgba(0,0,0,0.05),
-        linear-gradient(#dcca8a, #c7a740),
-        linear-gradient(#f9f2d6 0%, #f4e5bc 20%, #e6c75d 80%, #e2c045 100%),
-        linear-gradient(#f6ebbe, #e6c34d);  
-        -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: #654b00;
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
-    -fx-padding: 5 10 5 10;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
 }
+#disButton1 {
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
+}
+#disButton2 {
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
+}
+#disButton3 {
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
+}
+#disButton4 {
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
+}
+#disButton5 {
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
+}
+#finishButton {
+   -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,2.0,3.0,0.0;
+    -fx-text-fill: #191d22;
+    -fx-font-weight: bold;
+    -fx-font-size: 12.0px;
+    -fx-padding: 5.0 10.0 5.0 10.0;
+}
+#betLevelLabel {
+  -fx-font-family: "Trajan Pro 3";
+}
+

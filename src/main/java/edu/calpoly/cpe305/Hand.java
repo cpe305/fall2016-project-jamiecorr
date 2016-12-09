@@ -30,6 +30,14 @@ public class Hand {
     currentHand.add(card);
   }
   
+  public void addCardToIndex(int idx, Card card) {
+    currentHand.add(idx, card);
+  }
+  
+  public void removeCard(int idx) {
+    currentHand.remove(idx);
+  }
+  
   public void clearHand() {
       currentHand.clear();
   }

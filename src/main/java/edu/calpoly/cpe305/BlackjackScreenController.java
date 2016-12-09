@@ -40,7 +40,7 @@ public class BlackjackScreenController implements Initializable {
   private Button betButton, dealButton, hitButton, standButton, doubleButton, newRoundButton;
 
   @FXML
-  private ImageView playerCard1, playerCard2, playerCard3, playerCard4, playerCard5, playerCard6, playerChip;
+  private ImageView redArrowImage, playerCard1, playerCard2, playerCard3, playerCard4, playerCard5, playerCard6, playerChip;
 
   @FXML
   private ImageView dealerCard1, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6, dealerChip;
@@ -64,6 +64,7 @@ public class BlackjackScreenController implements Initializable {
     betButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        redArrowImage.setVisible(false);
         welcomeLabel.setText("");
 
         try {
@@ -77,28 +78,22 @@ public class BlackjackScreenController implements Initializable {
             betTextField.setDisable(true);
             betButton.setDisable(true);
             dealButton.setDisable(false);
-            bankLabel2.setText("$" + playersHand.getSumOfChips());
             betTextField.setStyle("-fx-border-color: black;");
-
           }
-          
-
         } catch (NumberFormatException exc) {
           betTextField.setStyle("-fx-border-color: red;");
           welcomeLabel.setText("Enter a positive integer ");
-
         } catch (IllegalArgumentException exc) {
           betTextField.setStyle("-fx-border-color: red;");
           welcomeLabel.setText("Enter a positive integer <= " + playersHand.getSumOfChips());
-
         }
-
       }
     });
 
     dealButton.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
+        betButton.setDisable(true);
 
         dealButton.setDisable(true);
         playerChip.setVisible(true);
@@ -125,8 +120,9 @@ public class BlackjackScreenController implements Initializable {
             new Image("/edu/calpoly/cpe305/Images/" + card3.getPosition() + card3.getSuit().charAt(0) + ".png"));
 
         dealerCard2.setVisible(true);
-        dealerCard2.setImage(new Image("/edu/calpoly/cpe305/Images/cardBack.png"));
-//        welcomeLabel.setText("Players hand has a value of " + BlackjackHandEvaluator.getHandValue(playersHand));
+        dealerCard2.setImage(new Image("/edu/calpoly/cpe305/Images/cardBackB.png"));
+        dealerCard2.setFitWidth(74);
+        
         playerChipLabel.setText("" + BlackjackHandEvaluator.getHandValue(playersHand));
         
         hitButton.setDisable(false);
@@ -272,6 +268,7 @@ public class BlackjackScreenController implements Initializable {
 
   private void startGame() {    
     welcomeLabel.setText("Place a bet to start");
+    redArrowImage.setVisible(true);
     playerChipLabel.setText("");
     dealerChipLabel.setText("");
     playerChip.setVisible(false);

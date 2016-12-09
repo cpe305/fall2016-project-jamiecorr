@@ -14,7 +14,7 @@ public class PokerHandEvaluator extends Hand {
     for (int i = 0; i < 4; i++) {
       Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.getCard(j))) {
+        if (compare.getPosition() == currentHand.getCard(j).getPosition()) {
           isPair = true;
           count = 1;
           break;
@@ -33,23 +33,20 @@ public class PokerHandEvaluator extends Hand {
     // count same cards
     int count;
     int number = 0;
+
     for (int i = 0; i < 4; i++) {
       count = 0;
 
       Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.getCard(j))) {
+        if (compare.getPosition() == currentHand.getCard(j).getPosition()) {
           // one pair
           if (count == 1) {
             number = number + 1;
           }
 
-          // two pairs
-          if (count == 2) {
-            number = number - 1;
-          }
-
           count = count + 1;
+          number = number + 1;
         }
       }
     }
@@ -68,7 +65,7 @@ public class PokerHandEvaluator extends Hand {
     for (int i = 0; i < 4; i++) {
       Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equalsPair(currentHand.getCard(j))) {
+        if ((compare.getPosition() > 10) && (compare.getPosition() == currentHand.getCard(j).getPosition())) {
           isPair = true;
           count = 1;
           break;
@@ -94,7 +91,7 @@ public class PokerHandEvaluator extends Hand {
       count = 0;
       Card compare = currentHand.getCard(i);
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.getCard(j))) { // this is in the card class 
+        if (compare.getPosition() == currentHand.getCard(j).getPosition()) {
           count = count + 1;
           if (count == 2) {
             isTriple = true;
@@ -112,11 +109,12 @@ public class PokerHandEvaluator extends Hand {
         break;
       }
     }
-    
+
     return isTriple;
   }
 
-  public static boolean hasStraight(Hand currentHand) { // determines if you have a strait
+  public static boolean hasStraight(Hand currentHand) { // determines if you
+                                                        // have a strait
     boolean hasStrait = false;
     currentHand.organize();
     int position = currentHand.getCard(0).getPosition();
@@ -162,8 +160,9 @@ public class PokerHandEvaluator extends Hand {
 
     for (int i = 0; i < 4; i++) {
       Card compare = currentHand.getCard(i);
+      count = 1;
       for (int j = (i + 1); j < 5; j++) {
-        if (compare.equals(currentHand.getCard(j))) {
+        if (compare.getPosition() == currentHand.getCard(j).getPosition()) {
           count = count + 1;
           if (count == 4) {
             finished = 100;

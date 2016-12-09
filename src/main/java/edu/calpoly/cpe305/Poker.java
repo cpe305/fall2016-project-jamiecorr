@@ -40,8 +40,6 @@ public class Poker {
 
       if ("no".equals(answer)) {
         System.out.println("Enter which cards you want to change (ex. 1,4,5)");
-        String cards = CasinoDriver.scan.nextLine();
-        playersHand.reDeal(cards, currentDeck);
       }
       
       playersHand.organize();
