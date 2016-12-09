@@ -136,7 +136,7 @@ public class BlackjackScreenController implements Initializable {
       public void handle(ActionEvent event) {
         playersHand.setRoundBet(playersHand.getRoundBet());
         makeHitMove();
-        bankLabel2.setText("$" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + playersHand.getSumOfChips());
       }
     });
 
@@ -155,7 +155,7 @@ public class BlackjackScreenController implements Initializable {
         evaluateRoundAndPrintResult();
         standButton.setDisable(true);
         checkIfBroke();
-        bankLabel2.setText("$" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + playersHand.getSumOfChips());
       }
     });
 
@@ -164,7 +164,7 @@ public class BlackjackScreenController implements Initializable {
       public void handle(ActionEvent event) {
         playersHand.setRoundBet(playersHand.getRoundBet() * 2);
         makeHitMove();
-        bankLabel2.setText("$" + playersHand.getSumOfChips());
+        bankLabel2.setText("  $" + playersHand.getSumOfChips());
       }
     });
 
@@ -276,7 +276,7 @@ public class BlackjackScreenController implements Initializable {
     
     betTextField.setStyle("-fx-border-color: black;");
     newRoundButton.setDisable(true);
-    bankLabel2.setText("$" + playersHand.getSumOfChips());
+    bankLabel2.setText("  $" + playersHand.getSumOfChips());
     playersHand.setRoundBet(0);
     betTextField.setFocusTraversable(true);
     betTextField.requestFocus();
